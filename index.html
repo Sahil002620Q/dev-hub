@@ -1717,54 +1717,78 @@
         });
 
         /* ══ RENDER CARD ══ */
+        /* ══ RENDER CARD ══ */
         function makeCard(s, idx) {
             const key = siteKey(s);
             const isFav = favourites.has(key);
             const domain = getDomain(s.url);
             const color = CAT_COLOR[s.cat] || '#3d7eff';
 
-            const a = document.createElement('a');
-            a.className = 'card';
-            a.href = s.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-            a.style.animationDelay = `${Math.min(idx * .026, .36)}s`;
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.style.animationDelay = `${Math.min(idx * .026, .36)}s`;
+            
+            // Smart Click Logic
+            card.addEventListener('click', (e) => {
+                // Ignore if clicking the heart button
+                if (e.target.closest('.fav-btn')) return;
 
-            a.innerHTML = `
-    <div class="card-strip" style="background:linear-gradient(90deg,${color}cc,${color}44)"></div>
-    <div class="card-body">
-      <div class="card-head">
-        <div class="card-logo">
-          <img src="${FAV_API(domain)}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <span class="fb" style="display:none;align-items:center;justify-content:center;width:100%;height:100%">${initials(s.name)}</span>
-        </div>
-        <div class="card-name">${s.name}</div>
-      </div>
-      <div class="card-desc">${s.desc}</div>
-      <div class="card-footer">
-        <div class="card-cat-pill">${s.cat}</div>
-        <button class="fav-btn ${isFav ? 'active' : ''}" data-key="${key}" title="${isFav ? 'Remove from favourites' : 'Add to favourites'}">
-          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        </button>
-      </div>
-    </div>
-  `;
-
-            // fav button — stop link propagation
-            const favBtn = a.querySelector('.fav-btn');
-            favBtn.addEventListener('click', e => {
-                e.preventDefault(); e.stopPropagation();
-                const k = favBtn.dataset.key;
-                if (favourites.has(k)) { favourites.delete(k); favBtn.classList.remove('active', 'pop'); }
-                else { favourites.add(k); favBtn.classList.add('active'); favBtn.classList.remove('pop'); void favBtn.offsetWidth; favBtn.classList.add('pop'); }
-                saveFavs(); updateFavBadge();
-                // if in fav tab and unfavd, remove card smoothly
-                if (activeTab === 'fav') {
-                    a.style.transition = 'opacity .22s,transform .22s';
-                    a.style.opacity = '0'; a.style.transform = 'scale(.95)';
-                    setTimeout(() => { a.remove(); checkEmpty(); }, 240);
+                if (s.type === 'ide') {
+                    openInstallModal(s); 
+                } else {
+                    window.open(s.url, '_blank');
                 }
             });
 
-            return a;
+            // Set HTML structure
+            card.innerHTML = `
+                <div class="card-strip" style="background:linear-gradient(90deg,${color}cc,${color}44)"></div>
+                <div class="card-body">
+                  <div class="card-head">
+                    <div class="card-logo">
+                      <img src="${s.logo || FAV_API(domain)}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                      <span class="fb" style="display:none;align-items:center;justify-content:center;width:100%;height:100%">${initials(s.name)}</span>
+                    </div>
+                    <div class="card-name">${s.name}</div>
+                  </div>
+                  <div class="card-desc">${s.desc}</div>
+                  <div class="card-footer">
+                    <div class="card-cat-pill">${s.cat}</div>
+                    <button class="fav-btn ${isFav ? 'active' : ''}" data-key="${key}" title="${isFav ? 'Remove from favourites' : 'Add to favourites'}">
+                      <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                  </div>
+                </div>
+            `;
+
+            // Re-attach favorite button logic after innerHTML is set
+            const favBtn = card.querySelector('.fav-btn');
+            favBtn.addEventListener('click', e => {
+                e.preventDefault(); 
+                e.stopPropagation();
+                const k = favBtn.dataset.key;
+                if (favourites.has(k)) { 
+                    favourites.delete(k); 
+                    favBtn.classList.remove('active', 'pop'); 
+                } else { 
+                    favourites.add(k); 
+                    favBtn.classList.add('active'); 
+                    favBtn.classList.remove('pop'); 
+                    void favBtn.offsetWidth; 
+                    favBtn.classList.add('pop'); 
+                }
+                saveFavs(); 
+                updateFavBadge();
+
+                if (activeTab === 'fav') {
+                    card.style.transition = 'opacity .22s,transform .22s';
+                    card.style.opacity = '0'; 
+                    card.style.transform = 'scale(.95)';
+                    setTimeout(() => { card.remove(); checkEmpty(); }, 240);
+                }
+            });
+
+            return card;
         }
 
         function checkEmpty() {
