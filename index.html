@@ -643,6 +643,11 @@
             line-height: 1.5;
             flex: 1;
             transition: color .4s;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.16rem; /* 2 lines × 1.5 line-height × 0.72rem */
         }
 
         /* footer row: category pill + fav button */
@@ -867,6 +872,162 @@
             border-radius: 20px;
             vertical-align: middle;
             margin-left: 4px;
+        }
+
+        /* ── SETTINGS ACTION ROW (Add Tool button) ── */
+        .sp-action-row {
+            padding: 10px 14px;
+        }
+
+        .sp-action-btn {
+            width: 100%;
+            padding: 9px 14px;
+            border-radius: 10px;
+            border: 1.5px dashed var(--glass-border);
+            background: var(--glass);
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: background .2s, border-color .2s, transform .15s;
+        }
+
+        .sp-action-btn:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            transform: scale(1.01);
+        }
+
+        .sp-action-btn svg {
+            width: 13px;
+            height: 13px;
+        }
+
+        /* ── CARD DETAIL MODAL ── */
+        .detail-header {
+            padding: 22px 22px 16px;
+            border-bottom: 1px solid var(--divider);
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .detail-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        [data-theme="dark"] .detail-logo {
+            background: rgba(255,255,255,0.10);
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        .detail-logo img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .detail-logo .fb-lg {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .detail-title-block {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .detail-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .detail-cat-pill {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.04em;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: var(--cat-pill-bg);
+            color: var(--accent);
+            display: inline-block;
+        }
+
+        .detail-body {
+            padding: 18px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .detail-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.65;
+        }
+
+        .detail-url {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--muted);
+            word-break: break-all;
+            background: var(--glass);
+            padding: 7px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .detail-install-section {
+            border-top: 1px solid var(--divider);
+            padding-top: 14px;
+        }
+
+        .detail-footer {
+            padding: 0 22px 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .visit-btn {
+            flex: 1;
+            padding: 11px 18px;
+            border-radius: 12px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            transition: opacity .2s, transform .18s;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .visit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
         .empty-state {
@@ -1629,6 +1790,15 @@
                     <circle cx="10" cy="10" r="8" />
                 </svg>
             </div>
+            <div class="sp-divider"></div>
+            <div class="sp-action-row">
+                <button class="sp-action-btn" id="add-fab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Add Custom Tool
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1732,12 +1902,43 @@
         </div>
     </div>
 
-    <!-- ADD TOOL FAB -->
-    <button class="add-fab" id="add-fab" title="Add Custom Tool">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-        </svg>
-    </button>
+    <!-- CARD DETAIL MODAL -->
+    <div class="modal-overlay hidden" id="detail-modal">
+        <div class="modal-panel" style="max-width:460px;">
+            <div class="detail-header" id="detail-header">
+                <div class="detail-logo" id="detail-logo">
+                    <img id="detail-img" src="" alt="" loading="lazy" onerror="this.style.display='none';document.getElementById('detail-fb').style.display='flex'">
+                    <span class="fb-lg" id="detail-fb" style="display:none;"></span>
+                </div>
+                <div class="detail-title-block">
+                    <div class="detail-name" id="detail-name"></div>
+                    <span class="detail-cat-pill" id="detail-cat"></span>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="detail-desc" id="detail-desc"></div>
+                <div class="detail-url" id="detail-url"></div>
+                <!-- Install section: shown only for IDE tools -->
+                <div class="detail-install-section" id="detail-install-section" style="display:none;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                        <span class="sp-title">Terminal Install</span>
+                        <select class="sp-select" id="detail-os-sel">
+                            <option value="win">Windows</option>
+                            <option value="mac">macOS</option>
+                            <option value="linux_apt">Linux (Ubuntu)</option>
+                            <option value="linux_pacman">Linux (Arch)</option>
+                            <option value="linux_dnf">Linux (Fedora)</option>
+                        </select>
+                    </div>
+                    <div id="detail-cmd" style="background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.73rem;color:var(--accent);word-break:break-all;"></div>
+                    <button class="pill" style="margin-top:8px;width:100%;border:1.5px solid var(--accent);" id="detail-copy-btn">Copy Command</button>
+                </div>
+            </div>
+            <div class="detail-footer">
+                <a class="visit-btn" id="detail-visit-btn" href="#" target="_blank" rel="noopener">Visit Site ↗</a>
+            </div>
+        </div>
+    </div>
 
     <script>
         /* ══ DATA ══ */
@@ -1972,18 +2173,14 @@
             card.className = 'card';
             card.style.animationDelay = `${Math.min(idx * .026, .36)}s`;
             
-            // Smart Click Logic
+            // Smart Click Logic — open Detail modal for ALL cards
             card.addEventListener('click', (e) => {
                 if (e.target.closest('.fav-btn') || e.target.closest('.quick-copy-btn') || e.target.closest('.del-custom-btn')) return;
 
                 catHistory[s.cat] = (catHistory[s.cat] || 0) + 1;
                 localStorage.setItem('catHistory', JSON.stringify(catHistory));
 
-                if (s.type === 'ide') {
-                    openInstallModal(s); 
-                } else {
-                    window.open(s.url, '_blank');
-                }
+                openDetailModal(s);
             });
 
             // Quick Copy Button HTML (only for installable tools)
@@ -2158,7 +2355,9 @@
 
             // Escape => clear search / close modals
             if (e.key === 'Escape') {
-                if (!instModal.classList.contains('hidden')) {
+                if (!document.getElementById('detail-modal').classList.contains('hidden')) {
+                    document.getElementById('detail-modal').classList.add('hidden');
+                } else if (!instModal.classList.contains('hidden')) {
                     instModal.classList.add('hidden');
                 } else if (!document.getElementById('add-tool-modal').classList.contains('hidden')) {
                     document.getElementById('add-tool-modal').classList.add('hidden');
@@ -2213,37 +2412,85 @@
             render();
         });
 
+        /* ══ DETAIL MODAL ══ */
+        let _detailSite = null;
+        const detailModal = document.getElementById('detail-modal');
+        const detailOsSel = document.getElementById('detail-os-sel');
+        const detailCmd = document.getElementById('detail-cmd');
+        const detailInstallSect = document.getElementById('detail-install-section');
+
+        detailModal.addEventListener('click', e => { if (e.target === detailModal) detailModal.classList.add('hidden'); });
+
+        function updateDetailCmd() {
+            if (!_detailSite || !_detailSite.commands) return;
+            detailCmd.textContent = _detailSite.commands[detailOsSel.value] || 'No command for this OS';
+        }
+        detailOsSel.addEventListener('change', updateDetailCmd);
+
+        document.getElementById('detail-copy-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText(detailCmd.textContent).then(() => {
+                const btn = document.getElementById('detail-copy-btn');
+                const old = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = old, 2000);
+            });
+        });
+
+        function openDetailModal(s) {
+            _detailSite = s;
+            const domain = getDomain(s.url);
+            const color = CAT_COLOR[s.cat] || '#3d7eff';
+
+            // header color strip
+            document.getElementById('detail-header').style.borderBottom = `1px solid ${color}33`;
+
+            // logo
+            const img = document.getElementById('detail-img');
+            const fb = document.getElementById('detail-fb');
+            img.style.display = '';
+            fb.style.display = 'none';
+            img.src = s.logo || FAV_API(domain);
+            fb.textContent = initials(s.name);
+
+            // text
+            document.getElementById('detail-name').textContent = s.name;
+            document.getElementById('detail-cat').textContent = s.cat;
+            document.getElementById('detail-cat').style.setProperty('color', color);
+            document.getElementById('detail-desc').textContent = s.desc;
+            document.getElementById('detail-url').textContent = s.url;
+
+            // visit button
+            document.getElementById('detail-visit-btn').href = s.url;
+            document.getElementById('detail-visit-btn').style.background = color;
+
+            // install section
+            if (s.type === 'ide' && s.commands) {
+                detailInstallSect.style.display = 'block';
+                // Auto-select user's OS
+                detailOsSel.value = userOS in s.commands ? userOS : Object.keys(s.commands)[0];
+                updateDetailCmd();
+            } else {
+                detailInstallSect.style.display = 'none';
+            }
+
+            detailModal.classList.remove('hidden');
+        }
+
         //by me 
-        /* ── INSTALLATION MODAL LOGIC ── */
+        /* ── INSTALLATION MODAL LOGIC (legacy, kept for compat) ── */
         let activeIDE = null;
         const instModal = document.getElementById('install-modal');
         const osSel = document.getElementById('os-sel');
         const cmdText = document.getElementById('cmd-text');
 
-        function openInstallModal(ide) {
-            activeIDE = ide;
-            document.getElementById('inst-name').textContent = `Install ${ide.name}`;
-            document.getElementById('inst-site-btn').href = ide.url;
-            updateCmdDisplay();
-            instModal.classList.remove('hidden');
-        }
-
         function updateCmdDisplay() {
             if (!activeIDE) return;
             const os = osSel.value;
-            // Fallback if commands for a specific OS aren't defined
             cmdText.textContent = activeIDE.commands[os] || "No command available for this OS";
         }
-
-        // OS Switcher listener
         osSel.addEventListener('change', updateCmdDisplay);
+        document.getElementById('inst-close').addEventListener('click', () => instModal.classList.add('hidden'));
 
-        // Close modal listener
-        document.getElementById('inst-close').addEventListener('click', () => {
-            instModal.classList.add('hidden');
-        });
-
-        // Copy to clipboard helper
         function copyCmd() {
             const text = cmdText.textContent;
             navigator.clipboard.writeText(text).then(() => {
