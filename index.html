@@ -212,10 +212,21 @@
 
         /* ── TOPBAR ── */
         .topbar {
-            padding: 28px 0 24px;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            padding: 12px 18px;
+            margin: 16px 0 28px;
             display: flex;
             align-items: center;
             gap: 10px;
+            background: var(--glass);
+            backdrop-filter: blur(var(--blur)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
         }
 
         .search-box {
@@ -226,7 +237,7 @@
 
         .search-box input {
             width: 100%;
-            padding: 11px 16px 11px 42px;
+            padding: 11px 40px 11px 42px;
             border-radius: 50px;
             border: 1.5px solid var(--glass-border);
             background: var(--glass);
@@ -238,6 +249,42 @@
             outline: none;
             box-shadow: var(--shadow);
             transition: box-shadow .2s, border-color .2s, background .4s, color .4s;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%) scale(1) rotate(0deg);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all .3s cubic-bezier(.34, 1.5, .64, 1);
+        }
+
+        .clear-btn.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .clear-btn:hover {
+            color: var(--accent);
+            transform: translateY(-50%) scale(1.15) rotate(180deg);
+        }
+
+        .clear-btn svg {
+            width: 15px;
+            height: 15px;
+            display: block;
         }
 
         .search-box input::placeholder {
@@ -254,7 +301,8 @@
             left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            opacity: .35;
+            opacity: .7;
+            color: var(--text);
             pointer-events: none;
         }
 
@@ -431,6 +479,30 @@
             color: var(--accent);
         }
 
+        .pill-more, .pill-less {
+            display: none;
+            padding: 5px 13px;
+            border-radius: 50px;
+            border: 1.5px solid var(--pill-border);
+            background: var(--pill-bg);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            font-size: 0.74rem;
+            font-weight: 500;
+            color: var(--muted);
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            transition: all .18s;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pill-more:hover, .pill-less:hover {
+            color: var(--text);
+            background: var(--glass);
+        }
+
         /* ── META ROW ── */
         .meta-row {
             display: flex;
@@ -443,6 +515,7 @@
             font-family: 'DM Mono', monospace;
             font-size: 0.67rem;
             color: var(--muted);
+            margin-left: 6px;
         }
 
         /* ── GRID ── */
@@ -1186,16 +1259,30 @@
             }
 
             .topbar {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                padding: 10px 14px;
+                margin: 12px 0 20px;
+                top: 12px;
+                gap: 8px;
+                border-radius: 20px;
             }
 
             .search-box {
-                max-width: 100%;
-                flex-basis: 100%;
+                max-width: none;
+                flex-basis: auto;
+                flex: 1;
             }
 
             .topbar-right {
                 margin-left: 0;
+            }
+
+            #domain-lbl {
+                display: none;
+            }
+
+            .domain-trigger {
+                padding: 10px;
             }
 
             .settings-panel {
@@ -1206,7 +1293,41 @@
             .nav-tabs {
                 gap: 0;
                 overflow-x: auto;
-                padding-bottom: 14px;
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+
+            .pills {
+                max-height: 31px;
+                overflow: hidden;
+                position: relative;
+                padding-right: 64px;
+                padding-bottom: 0;
+                margin-bottom: 16px;
+            }
+
+            .pills.expanded {
+                max-height: none;
+                overflow: visible;
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+
+            .pill-more {
+                display: flex;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 10;
+                box-shadow: -10px 0 15px var(--bg);
+            }
+
+            .pills.expanded .pill-more {
+                display: none;
+            }
+
+            .pills.expanded .pill-less {
+                display: flex;
             }
         }
     </style>
@@ -1228,6 +1349,12 @@
                         <line x1="13.5" y1="13.5" x2="18" y2="18" />
                     </svg></span>
                 <input id="q" type="text" placeholder="Search..." autocomplete="off" spellcheck="false">
+                <button class="clear-btn" id="clear-btn" aria-label="Clear search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
             </div>
             <div class="topbar-right">
                 <button class="domain-trigger" id="domain-btn">
@@ -1272,6 +1399,8 @@
             <div class="pill" data-cat="security">Security</div>
             <div class="pill" data-cat="iot">IoT</div>
             <div class="pill" data-cat="ide">IDEs</div>
+            <div class="pill-more" id="pill-more" onclick="document.getElementById('pills').classList.add('expanded')">+ More</div>
+            <div class="pill-less" id="pill-less" onclick="document.getElementById('pills').classList.remove('expanded')">&lt;</div>
         </div>
 
         <div class="meta-row">
@@ -1408,8 +1537,11 @@
                         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <span class="sp-title">Terminal Command</span>
                         <select class="sp-select" id="os-sel">
-                            <option value="wsl">WSL (Windows)</option>
-                            <option value="linux">Linux (Native)</option>
+                            <option value="win">Windows</option>
+                            <option value="mac">macOS</option>
+                            <option value="linux_apt">Linux (Ubuntu/Debian)</option>
+                            <option value="linux_pacman">Linux (Arch)</option>
+                            <option value="linux_dnf">Linux (Fedora/RHEL)</option>
                         </select>
                     </div>
 
@@ -1455,45 +1587,45 @@
         ];
 
         const sites = [
-             //     { name: "GitHub", url: "https://github.com", desc: "Version control & collaboration", cat: "code" },
-        //     { name: "GitLab", url: "https://gitlab.com", desc: "DevOps with built-in CI/CD", cat: "code" },
-        //     { name: "VS Code Web", url: "https://vscode.dev", desc: "Full VS Code in the browser", cat: "code" },
-        //     { name: "CodePen", url: "https://codepen.io", desc: "Live HTML / CSS / JS playground", cat: "code" },
-        //     { name: "Replit", url: "https://replit.com", desc: "Cloud IDE — code and deploy", cat: "code" },
-        //     { name: "Stack Overflow", url: "https://stackoverflow.com", desc: "Q&A for every programming issue", cat: "code" },
-        //     { name: "DevDocs", url: "https://devdocs.io", desc: "Unified API docs for 200+ languages", cat: "code" },
-        //     { name: "LeetCode", url: "https://leetcode.com", desc: "DSA problems for interviews", cat: "code" },
-        //     { name: "Codeforces", url: "https://codeforces.com", desc: "Competitive programming contests", cat: "code" },
-        //     { name: "npm", url: "https://npmjs.com", desc: "Node.js package registry", cat: "code" },
-        //     { name: "PyPI", url: "https://pypi.org", desc: "Python package index", cat: "code" },
-        //     { name: "Hugging Face", url: "https://huggingface.co", desc: "Models, datasets & Spaces", cat: "ai" },
-        //     { name: "Claude", url: "https://claude.ai", desc: "Anthropic AI — reasoning & code", cat: "ai" },
-        //     { name: "ChatGPT", url: "https://chat.openai.com", desc: "OpenAI conversational AI", cat: "ai" },
-        //     { name: "Gemini", url: "https://gemini.google.com", desc: "Google multimodal AI", cat: "ai" },
-        //     { name: "Perplexity", url: "https://perplexity.ai", desc: "AI search with cited answers", cat: "ai" },
-        //     { name: "OpenAI API", url: "https://platform.openai.com", desc: "GPT-4, DALL·E, Whisper API", cat: "ai" },
-        //     { name: "Groq", url: "https://groq.com", desc: "Ultra-fast LLM inference", cat: "ai" },
-        //     { name: "Ollama", url: "https://ollama.com", desc: "Run LLMs locally", cat: "ai" },
-        //     { name: "Together AI", url: "https://together.ai", desc: "Open-source model cloud API", cat: "ai" },
-        //     { name: "Replicate", url: "https://replicate.com", desc: "Run ML models via API", cat: "ai" },
-        //     { name: "LangChain", url: "https://langchain.com", desc: "Framework for LLM-powered apps", cat: "ai" },
-        //     { name: "LM Studio", url: "https://lmstudio.ai", desc: "Desktop app for local LLMs", cat: "ai" },
-        //     { name: "Mistral", url: "https://mistral.ai", desc: "Efficient open & commercial LLMs", cat: "ai" },
-        //     { name: "Kaggle", url: "https://kaggle.com", desc: "Competitions, notebooks & datasets", cat: "ml" },
-        //     { name: "Google Colab", url: "https://colab.research.google.com", desc: "Free GPU Jupyter notebooks", cat: "ml" },
-        //     { name: "W&B", url: "https://wandb.ai", desc: "Experiment tracking & versioning", cat: "ml" },
-        //     { name: "Papers With Code", url: "https://paperswithcode.com", desc: "ML papers + code + benchmarks", cat: "ml" },
-        //     { name: "PyTorch", url: "https://pytorch.org", desc: "Deep learning framework by Meta", cat: "ml" },
-        //     { name: "TensorFlow", url: "https://tensorflow.org", desc: "Google open-source ML framework", cat: "ml" },
-        //     { name: "Scikit-learn", url: "https://scikit-learn.org", desc: "Classical ML algorithms in Python", cat: "ml" },
-        //     { name: "Fast.ai", url: "https://fast.ai", desc: "Practical deep learning top-down", cat: "ml" },
-        //     { name: "Roboflow", url: "https://roboflow.com", desc: "Computer vision datasets & training", cat: "ml" },
-        //     { name: "Vercel", url: "https://vercel.com", desc: "Deploy frontend — zero-config CI/CD", cat: "cloud" },
+            { name: "GitHub", url: "https://github.com", desc: "Version control & collaboration", cat: "code" },
+            { name: "GitLab", url: "https://gitlab.com", desc: "DevOps with built-in CI/CD", cat: "code" },
+            { name: "VS Code Web", url: "https://vscode.dev", desc: "Full VS Code in the browser", cat: "code" },
+            { name: "CodePen", url: "https://codepen.io", desc: "Live HTML / CSS / JS playground", cat: "code" },
+            { name: "Replit", url: "https://replit.com", desc: "Cloud IDE — code and deploy", cat: "code" },
+            { name: "Stack Overflow", url: "https://stackoverflow.com", desc: "Q&A for every programming issue", cat: "code" },
+            { name: "DevDocs", url: "https://devdocs.io", desc: "Unified API docs for 200+ languages", cat: "code" },
+            { name: "LeetCode", url: "https://leetcode.com", desc: "DSA problems for interviews", cat: "code" },
+            { name: "Codeforces", url: "https://codeforces.com", desc: "Competitive programming contests", cat: "code" },
+            { name: "Node.js & npm", url: "https://nodejs.org", desc: "JavaScript runtime built on Chrome's V8", cat: "code", type: "ide", commands: { win: "winget install -e --id OpenJS.NodeJS", mac: "brew install node", linux_apt: "sudo apt install nodejs npm", linux_pacman: "sudo pacman -S nodejs npm", linux_dnf: "sudo dnf install nodejs npm" } },
+            { name: "PyPI", url: "https://pypi.org", desc: "Python package index", cat: "code" },
+            { name: "Hugging Face", url: "https://huggingface.co", desc: "Models, datasets & Spaces", cat: "ai" },
+            { name: "Claude", url: "https://claude.ai", desc: "Anthropic AI — reasoning & code", cat: "ai" },
+            { name: "ChatGPT", url: "https://chat.openai.com", desc: "OpenAI conversational AI", cat: "ai" },
+            { name: "Gemini", url: "https://gemini.google.com", desc: "Google multimodal AI", cat: "ai" },
+            { name: "Perplexity", url: "https://perplexity.ai", desc: "AI search with cited answers", cat: "ai" },
+            { name: "OpenAI API", url: "https://platform.openai.com", desc: "GPT-4, DALL·E, Whisper API", cat: "ai" },
+            { name: "Groq", url: "https://groq.com", desc: "Ultra-fast LLM inference", cat: "ai" },
+            { name: "Ollama", url: "https://ollama.com", desc: "Run LLMs locally", cat: "ai", type: "ide", commands: { win: "winget install -e --id Ollama.Ollama", mac: "brew install --cask ollama", linux_apt: "curl -fsSL https://ollama.com/install.sh | sh", linux_pacman: "curl -fsSL https://ollama.com/install.sh | sh", linux_dnf: "curl -fsSL https://ollama.com/install.sh | sh" } },
+            { name: "Together AI", url: "https://together.ai", desc: "Open-source model cloud API", cat: "ai" },
+            { name: "Replicate", url: "https://replicate.com", desc: "Run ML models via API", cat: "ai" },
+            { name: "LangChain", url: "https://langchain.com", desc: "Framework for LLM-powered apps", cat: "ai" },
+            { name: "LM Studio", url: "https://lmstudio.ai", desc: "Desktop app for local LLMs", cat: "ai" },
+            { name: "Mistral", url: "https://mistral.ai", desc: "Efficient open & commercial LLMs", cat: "ai" },
+            { name: "Kaggle", url: "https://kaggle.com", desc: "Competitions, notebooks & datasets", cat: "ml" },
+            { name: "Google Colab", url: "https://colab.research.google.com", desc: "Free GPU Jupyter notebooks", cat: "ml" },
+            { name: "W&B", url: "https://wandb.ai", desc: "Experiment tracking & versioning", cat: "ml" },
+            { name: "Papers With Code", url: "https://paperswithcode.com", desc: "ML papers + code + benchmarks", cat: "ml" },
+            { name: "PyTorch", url: "https://pytorch.org", desc: "Deep learning framework by Meta", cat: "ml" },
+            { name: "TensorFlow", url: "https://tensorflow.org", desc: "Google open-source ML framework", cat: "ml" },
+            { name: "Scikit-learn", url: "https://scikit-learn.org", desc: "Classical ML algorithms in Python", cat: "ml" },
+            { name: "Fast.ai", url: "https://fast.ai", desc: "Practical deep learning top-down", cat: "ml" },
+            { name: "Roboflow", url: "https://roboflow.com", desc: "Computer vision datasets & training", cat: "ml" },
+            { name: "Vercel", url: "https://vercel.com", desc: "Deploy frontend — zero-config CI/CD", cat: "cloud" },
             { name: "Railway", url: "https://railway.app", desc: "Instant backend deployments", cat: "cloud" },
             { name: "Render", url: "https://render.com", desc: "Web services & static sites", cat: "cloud" },
             { name: "Cloudflare", url: "https://cloudflare.com", desc: "CDN, Workers, Tunnels, Pages", cat: "cloud" },
             { name: "Supabase", url: "https://supabase.com", desc: "Postgres + auth + storage", cat: "cloud" },
-            { name: "Docker Hub", url: "https://hub.docker.com", desc: "Container image registry", cat: "cloud" },
+            { name: "Docker", url: "https://docker.com", desc: "Build and share containerized applications", cat: "cloud", type: "ide", commands: { win: "winget install -e --id Docker.DockerDesktop", mac: "brew install --cask docker", linux_apt: "sudo apt install docker.io", linux_pacman: "sudo pacman -S docker", linux_dnf: "sudo dnf install docker" } },
             { name: "Fly.io", url: "https://fly.io", desc: "Deploy containers at the edge", cat: "cloud" },
             { name: "Streamlit", url: "https://streamlit.io", desc: "Python scripts into web apps", cat: "cloud" },
             { name: "HF Spaces", url: "https://huggingface.co/spaces", desc: "Host Gradio & Streamlit demos", cat: "cloud" },
@@ -1512,7 +1644,7 @@
             { name: "GeeksForGeeks", url: "https://geeksforgeeks.org", desc: "DSA & CS fundamentals", cat: "learn" },
             { name: "Andrej Karpathy", url: "https://youtube.com/@AndrejKarpathy", desc: "LLMs & deep learning from scratch", cat: "learn" },
             { name: "3Blue1Brown", url: "https://youtube.com/@3blue1brown", desc: "Visual math — algebra & calculus", cat: "learn" },
-            { name: "Postman", url: "https://postman.com", desc: "API testing and documentation", cat: "tools" },
+            { name: "Postman", url: "https://postman.com", desc: "API testing and documentation", cat: "tools", type: "ide", commands: { win: "winget install -e --id Postman.Postman", mac: "brew install --cask postman", linux_apt: "sudo snap install postman", linux_pacman: "yay -S postman-bin", linux_dnf: "sudo snap install postman" } },
             { name: "Regex101", url: "https://regex101.com", desc: "Live regex builder & explainer", cat: "tools" },
             { name: "Excalidraw", url: "https://excalidraw.com", desc: "Sketch diagrams & system designs", cat: "tools" },
             { name: "Ray.so", url: "https://ray.so", desc: "Beautiful code screenshots", cat: "tools" },
@@ -1522,69 +1654,73 @@
             { name: "Explainshell", url: "https://explainshell.com", desc: "Explains every shell command flag", cat: "tools" },
             { name: "Crontab Guru", url: "https://crontab.guru", desc: "Visual cron expression editor", cat: "tools" },
 // ------------------------------------------------------------------------------------------------------------------
-//error upward list element
-            { name: "GitHub", url: "https://github.com", desc: "Version control & collaboration", cat: "code" },
-            { name: "GitLab", url: "https://gitlab.com", desc: "DevOps with built-in CI/CD", cat: "code" },
-            { name: "VS Code Web", url: "https://vscode.dev", desc: "Full VS Code in the browser", cat: "code" },
-            { name: "Stack Overflow", url: "https://stackoverflow.com", desc: "Q&A for programming issues", cat: "code" },
-            { name: "DevDocs", url: "https://devdocs.io", desc: "Unified API documentation", cat: "code" },
-            { name: "npm", url: "https://npmjs.com", desc: "Node.js package registry", cat: "code" },
-            { name: "Hugging Face", url: "https://huggingface.co", desc: "Models, datasets & Spaces", cat: "ai" },
-            { name: "Claude", url: "https://claude.ai", desc: "Anthropic AI — reasoning & code", cat: "ai" },
-            { name: "ChatGPT", url: "https://chat.openai.com", desc: "OpenAI conversational AI", cat: "ai" },
-            { name: "Gemini", url: "https://gemini.google.com", desc: "Google multimodal AI", cat: "ai" },
-            { name: "Perplexity", url: "https://perplexity.ai", desc: "AI search with cited answers", cat: "ai" },
-            { name: "Ollama", url: "https://ollama.com", desc: "Run LLMs locally", cat: "ai" },
-            { name: "Kaggle", url: "https://kaggle.com", desc: "Competitions & datasets", cat: "ml" },
-            { name: "Google Colab", url: "https://colab.research.google.com", desc: "Free GPU Jupyter notebooks", cat: "ml" },
-            { name: "Vercel", url: "https://vercel.com", desc: "Deploy frontend projects instantly", cat: "cloud" },
-            { name: "Supabase", url: "https://supabase.com", desc: "Postgres + auth + storage", cat: "cloud" },
+//error upward list element some are still remaining on upward after straight end , sttart form cyber sec
+            // { name: "Stack Overflow", url: "https://stackoverflow.com", desc: "Q&A for programming issues", cat: "code" },
+            // { name: "DevDocs", url: "https://devdocs.io", desc: "Unified API documentation", cat: "code" },
+            // { name: "Google Colab", url: "https://colab.research.google.com", desc: "Free GPU Jupyter notebooks", cat: "ml" },
             { name: "Firebase", url: "https://firebase.google.com", desc: "Google backend platform", cat: "cloud" },
-            { name: "Cloudflare", url: "https://cloudflare.com", desc: "CDN & Edge computing", cat: "cloud" },
-            { name: "arXiv", url: "https://arxiv.org", desc: "CS & AI research preprints", cat: "research" },
-            { name: "roadmap.sh", url: "https://roadmap.sh", desc: "Guided roadmaps for dev roles", cat: "learn" },
-            { name: "Postman", url: "https://postman.com", desc: "API testing and documentation", cat: "tools" },
-            { name: "Ngrok", url: "https://ngrok.com", desc: "Localhost tunneling", cat: "tools" },
+            // { name: "Cloudflare", url: "https://cloudflare.com", desc: "CDN & Edge computing", cat: "cloud" },
+            // { name: "arXiv", url: "https://arxiv.org", desc: "CS & AI research preprints", cat: "research" },
+            // { name: "roadmap.sh", url: "https://roadmap.sh", desc: "Guided roadmaps for dev roles", cat: "learn" },
+            // { name: "Postman", url: "https://postman.com", desc: "API testing and documentation", cat: "tools" },
+            { name: "Ngrok", url: "https://ngrok.com", desc: "Localhost tunneling", cat: "tools", type: "ide", commands: { win: "winget install ngrok.ngrok", mac: "brew install ngrok/ngrok/ngrok", linux_apt: "sudo snap install ngrok", linux_pacman: "yay -S ngrok", linux_dnf: "sudo snap install ngrok" } },
             { name: "Figma", url: "https://figma.com", desc: "Interface design tool", cat: "tools" },
             { name: "Canva", url: "https://canva.com", desc: "Graphic design platform", cat: "tools" },
-            { name: "TryHackMe", url: "https://tryhackme.com", desc: "Cyber security training", cat: "security" },
-            { name: "Shodan", url: "https://shodan.io", desc: "IoT device search engine", cat: "security" },
-            { name: "Wokwi", url: "https://wokwi.com", desc: "IoT & Arduino simulator", cat: "iot" },
+            // { name: "Wokwi", url: "https://wokwi.com", desc: "IoT & Arduino simulator", cat: "iot" },
 
     // --- IDEs (Trigger Terminal Modal) ---
     { 
         name: "Antigravity", url: "https://antigravity.dev", desc: "High-performance coding", cat: "ide", type: "ide", 
         logo: "https://antigravity.dev/favicon.ico",
-        commands: { wsl: "curl -sS https://antigravity.dev/install.sh | sh", linux: "curl -sS https://antigravity.dev/install.sh | sh" } 
+        commands: { win: "winget install Antigravity", mac: "brew install antigravity", linux_apt: "curl -sS https://antigravity.dev/install.sh | sh", linux_pacman: "curl -sS https://antigravity.dev/install.sh | sh", linux_dnf: "curl -sS https://antigravity.dev/install.sh | sh" } 
     },
     { 
         name: "Cursor", url: "https://cursor.sh", desc: "AI-first code editor", cat: "ide", type: "ide", 
         logo: "https://www.cursor.com/favicon.ico",
-        commands: { wsl: "sudo snap install cursor --classic", linux: "sudo snap install cursor --classic" } 
+        commands: { win: "winget install Cursor", mac: "brew install --cask cursor", linux_apt: "sudo snap install cursor --classic", linux_pacman: "yay -S cursor-bin", linux_dnf: "sudo dnf install cursor" } 
     },
     { 
         name: "VS Code", url: "https://code.visualstudio.com", desc: "Standard dev editor", cat: "ide", type: "ide", 
-        commands: { wsl: "sudo apt update && sudo apt install code", linux: "sudo apt install code" } 
+        commands: { win: "winget install -e --id Microsoft.VisualStudioCode", mac: "brew install --cask visual-studio-code", linux_apt: "sudo apt update && sudo apt install code", linux_pacman: "sudo pacman -S code", linux_dnf: "sudo dnf install code" } 
     },
     { 
         name: "Neovim", url: "https://neovim.io", desc: "Terminal-based editor", cat: "ide", type: "ide", 
-        commands: { wsl: "sudo apt install neovim", linux: "sudo apt install neovim" } 
+        commands: { win: "winget install Neovim.Neovim", mac: "brew install neovim", linux_apt: "sudo apt install neovim", linux_pacman: "sudo pacman -S neovim", linux_dnf: "sudo dnf install neovim" } 
     },
     { 
         name: "PyCharm", url: "https://jetbrains.com/pycharm", desc: "Python focused IDE", cat: "ide", type: "ide", 
-        commands: { wsl: "sudo snap install pycharm-community --classic", linux: "sudo snap install pycharm-community --classic" } 
+        commands: { win: "winget install JetBrains.PyCharm.Community", mac: "brew install --cask pycharm-ce", linux_apt: "sudo snap install pycharm-community --classic", linux_pacman: "sudo pacman -S pycharm-community", linux_dnf: "sudo dnf install pycharm-community" } 
     },
     { 
         name: "CLion", url: "https://jetbrains.com/clion", desc: "C/C++ JetBrains IDE", cat: "ide", type: "ide", 
-        commands: { wsl: "sudo snap install clion --classic", linux: "sudo snap install clion --classic" } 
+        commands: { win: "winget install JetBrains.CLion", mac: "brew install --cask clion", linux_apt: "sudo snap install clion --classic", linux_pacman: "sudo pacman -S clion", linux_dnf: "sudo dnf install clion" } 
     },
 
     // --- New Specialized Tools ---
     { name: "Lovable", url: "https://lovable.dev", desc: "AI full-stack builder", cat: "ai", logo: "https://lovable.dev/favicon.ico" },
-    { name: "Expo", url: "https://expo.dev", desc: "Universal native apps platform", cat: "tools" },
+    { name: "Expo", url: "https://expo.dev", desc: "Universal native apps platform", cat: "tools", type: "ide", commands: { win: "npm install -g expo-cli", mac: "npm install -g expo-cli", linux_apt: "npm install -g expo-cli", linux_pacman: "npm install -g expo-cli", linux_dnf: "npm install -g expo-cli" } },
     { name: "GitReverse", url: "https://gitreverse.com", desc: "Git history visualization", cat: "code" },
     { name: "CodeCombat", url: "https://codecombat.com", desc: "Gamified coding learning", cat: "learn" },
-    { name: "API Layer", url: "https://apilayer.com", desc: "API Marketplace", cat: "tools" }
+    { name: "API Layer", url: "https://apilayer.com", desc: "API Marketplace", cat: "tools" },
+    { name: "DNS Exit", url: "https://dnsexit.com", desc: "Dynamic DNS and domain services", cat: "cloud" },
+    { name: "Shodan", url: "https://shodan.io", desc: "Search engine for Internet-connected devices", cat: "security" },
+    { name: "HackTheBox", url: "https://hackthebox.com", desc: "Cybersecurity training platform", cat: "security" },
+    { name: "TryHackMe", url: "https://tryhackme.com", desc: "Hands-on cyber security training", cat: "security" },
+    { name: "OWASP", url: "https://owasp.org", desc: "Open Web Application Security Project", cat: "security" },
+    { name: "Nmap", url: "https://nmap.org", desc: "Network exploration and security auditing", cat: "security", type: "ide", commands: { win: "winget install -e --id Insecure.Nmap", mac: "brew install nmap", linux_apt: "sudo apt install nmap", linux_pacman: "sudo pacman -S nmap", linux_dnf: "sudo dnf install nmap" } },
+    { name: "Wireshark", url: "https://wireshark.org", desc: "Network protocol analyzer", cat: "security", type: "ide", commands: { win: "winget install -e --id WiresharkFoundation.Wireshark", mac: "brew install --cask wireshark", linux_apt: "sudo apt install wireshark", linux_pacman: "sudo pacman -S wireshark-qt", linux_dnf: "sudo dnf install wireshark" } },
+    { name: "Wokwi", url: "https://wokwi.com", desc: "IoT & Arduino simulator", cat: "iot" },
+    { name: "Arduino Cloud", url: "https://cloud.arduino.cc", desc: "IoT platform for Arduino", cat: "iot" },
+    { name: "ThingsBoard", url: "https://thingsboard.io", desc: "Open-source IoT Platform", cat: "iot" },
+    { name: "Kali Tools", url: "https://www.kali.org/tools/", desc: "Documentation for Kali Linux tools", cat: "security" },
+    { 
+        name: "Flutter", url: "https://flutter.dev", desc: "UI toolkit for building native apps", cat: "code", type: "ide", 
+        commands: { win: "winget install -e --id Flutter.Flutter", mac: "brew install --cask flutter", linux_apt: "sudo snap install flutter --classic", linux_pacman: "sudo pacman -S flutter", linux_dnf: "sudo dnf install flutter" } 
+    },
+    { 
+        name: "Git", url: "https://git-scm.com", desc: "Distributed version control system", cat: "code", type: "ide", 
+        commands: { win: "winget install -e --id Git.Git", mac: "brew install git", linux_apt: "sudo apt install git", linux_pacman: "sudo pacman -S git", linux_dnf: "sudo dnf install git" } 
+    }
 ];
         // const sites = [
         //     { name: "GitHub", url: "https://github.com", desc: "Version control & collaboration", cat: "code" },
@@ -1695,6 +1831,10 @@
         let pendingDoms = new Set();
         let appliedDoms = new Set();
         let favourites = new Set(JSON.parse(localStorage.getItem('favs') || '[]'));
+        let catHistory = JSON.parse(localStorage.getItem('catHistory') || '{}');
+
+        // Assign a random sort key to each site for refresh randomness
+        sites.forEach(s => s._rand = Math.random());
 
         const saveFavs = () => localStorage.setItem('favs', JSON.stringify([...favourites]));
 
@@ -1804,12 +1944,33 @@
             if (!p) return;
             [...pillsEl.querySelectorAll('.pill')].forEach(x => x.classList.remove('active'));
             p.classList.add('active');
+            
+            pillsEl.prepend(p);
+            
             activeCat = p.dataset.cat;
+            
+            if (activeCat !== 'all') {
+                catHistory[activeCat] = (catHistory[activeCat] || 0) + 2;
+                localStorage.setItem('catHistory', JSON.stringify(catHistory));
+            }
+            
             appliedDoms.clear(); updateDomLbl();
             render();
         });
 
-        qEl.addEventListener('input', () => { searchQ = qEl.value; render(); });
+        const clearBtn = document.getElementById('clear-btn');
+        qEl.addEventListener('input', () => { 
+            searchQ = qEl.value; 
+            clearBtn.classList.toggle('visible', searchQ.length > 0);
+            render(); 
+        });
+        clearBtn.addEventListener('click', () => {
+            qEl.value = '';
+            searchQ = '';
+            clearBtn.classList.remove('visible');
+            qEl.focus();
+            render();
+        });
 
         /* ══ DOMAIN MODAL ══ */
         domains.forEach(d => {
@@ -1864,6 +2025,9 @@
             card.addEventListener('click', (e) => {
                 // Ignore if clicking the heart button
                 if (e.target.closest('.fav-btn')) return;
+
+                catHistory[s.cat] = (catHistory[s.cat] || 0) + 1;
+                localStorage.setItem('catHistory', JSON.stringify(catHistory));
 
                 if (s.type === 'ide') {
                     openInstallModal(s); 
@@ -1952,6 +2116,14 @@
                 const domOk = !domCats || domCats.has(s.cat);
                 const qOk = !lq || s.name.toLowerCase().includes(lq) || s.desc.toLowerCase().includes(lq) || s.cat.includes(lq);
                 return catOk && domOk && qOk;
+            });
+
+            // Sort by user history, then random
+            filtered.sort((a, b) => {
+                const scoreA = catHistory[a.cat] || 0;
+                const scoreB = catHistory[b.cat] || 0;
+                if (scoreB !== scoreA) return scoreB - scoreA;
+                return a._rand - b._rand;
             });
 
             [...grid.querySelectorAll('.card')].forEach(c => c.remove());
