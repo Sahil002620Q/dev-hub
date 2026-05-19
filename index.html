@@ -479,7 +479,8 @@
             color: var(--accent);
         }
 
-        .pill-more, .pill-less {
+        .pill-more,
+        .pill-less {
             display: none;
             padding: 5px 13px;
             border-radius: 50px;
@@ -498,7 +499,8 @@
             justify-content: center;
         }
 
-        .pill-more:hover, .pill-less:hover {
+        .pill-more:hover,
+        .pill-less:hover {
             color: var(--text);
             background: var(--glass);
         }
@@ -647,7 +649,8 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            min-height: 2.16rem; /* 2 lines × 1.5 line-height × 0.72rem */
+            min-height: 2.16rem;
+            /* 2 lines × 1.5 line-height × 0.72rem */
         }
 
         /* footer row: category pill + fav button */
@@ -805,8 +808,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 24px rgba(61,126,255,0.4), 0 2px 8px rgba(0,0,0,0.15);
-            transition: all .3s cubic-bezier(.34,1.5,.64,1);
+            box-shadow: 0 8px 24px rgba(61, 126, 255, 0.4), 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all .3s cubic-bezier(.34, 1.5, .64, 1);
             font-size: 1.4rem;
             font-weight: 300;
             line-height: 1;
@@ -814,7 +817,7 @@
 
         .add-fab:hover {
             transform: scale(1.12) rotate(90deg);
-            box-shadow: 0 12px 32px rgba(61,126,255,0.5);
+            box-shadow: 0 12px 32px rgba(61, 126, 255, 0.5);
         }
 
         .add-fab svg {
@@ -838,7 +841,7 @@
         }
 
         .add-tool-input:focus {
-            border-color: rgba(61,126,255,0.4);
+            border-color: rgba(61, 126, 255, 0.4);
             box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
@@ -923,17 +926,17 @@
             border-radius: 12px;
             overflow: hidden;
             flex-shrink: 0;
-            background: rgba(255,255,255,0.85);
+            background: rgba(255, 255, 255, 0.85);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255,255,255,0.9);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         [data-theme="dark"] .detail-logo {
-            background: rgba(255,255,255,0.10);
-            border-color: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.08);
         }
 
         .detail-logo img {
@@ -1637,9 +1640,10 @@
                         <circle cx="9" cy="9" r="6" />
                         <line x1="13.5" y1="13.5" x2="18" y2="18" />
                     </svg></span>
-                <input id="q" type="text" placeholder="Search tools... (Press /)" autocomplete="off" spellcheck="false">
+                <input id="q" type="text" placeholder="Search tools" autocomplete="off" spellcheck="false">
                 <button class="clear-btn" id="clear-btn" aria-label="Clear search">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
@@ -1688,8 +1692,10 @@
             <div class="pill" data-cat="security">Security</div>
             <div class="pill" data-cat="iot">IoT</div>
             <div class="pill" data-cat="ide">IDEs</div>
-            <div class="pill-more" id="pill-more" onclick="document.getElementById('pills').classList.add('expanded')">+ More</div>
-            <div class="pill-less" id="pill-less" onclick="document.getElementById('pills').classList.remove('expanded')">&lt;</div>
+            <div class="pill-more" id="pill-more" onclick="document.getElementById('pills').classList.add('expanded')">+
+                More</div>
+            <div class="pill-less" id="pill-less"
+                onclick="document.getElementById('pills').classList.remove('expanded')">&lt;</div>
         </div>
 
         <div class="meta-row">
@@ -1793,8 +1799,10 @@
             <div class="sp-divider"></div>
             <div class="sp-action-row">
                 <button class="sp-action-btn" id="add-fab">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
                     </svg>
                     Add Custom Tool
                 </button>
@@ -1907,7 +1915,8 @@
         <div class="modal-panel" style="max-width:460px;">
             <div class="detail-header" id="detail-header">
                 <div class="detail-logo" id="detail-logo">
-                    <img id="detail-img" src="" alt="" loading="lazy" onerror="this.style.display='none';document.getElementById('detail-fb').style.display='flex'">
+                    <img id="detail-img" src="" alt="" loading="lazy"
+                        onerror="this.style.display='none';document.getElementById('detail-fb').style.display='flex'">
                     <span class="fb-lg" id="detail-fb" style="display:none;"></span>
                 </div>
                 <div class="detail-title-block">
@@ -1930,8 +1939,11 @@
                             <option value="linux_dnf">Linux (Fedora)</option>
                         </select>
                     </div>
-                    <div id="detail-cmd" style="background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.73rem;color:var(--accent);word-break:break-all;"></div>
-                    <button class="pill" style="margin-top:8px;width:100%;border:1.5px solid var(--accent);" id="detail-copy-btn">Copy Command</button>
+                    <div id="detail-cmd"
+                        style="background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.73rem;color:var(--accent);word-break:break-all;">
+                    </div>
+                    <button class="pill" style="margin-top:8px;width:100%;border:1.5px solid var(--accent);"
+                        id="detail-copy-btn">Copy Command</button>
                 </div>
             </div>
             <div class="detail-footer">
@@ -2086,7 +2098,7 @@
             // show/hide pills & domain btn for all-tab only
             pillsEl.style.display = activeTab === 'all' ? '' : 'none';
             domBtn.style.display = activeTab === 'all' ? '' : 'none';
-            qEl.placeholder = activeTab === 'fav' ? 'Search favourites...' : 'Search tools... (Press /)';
+            qEl.placeholder = activeTab === 'fav' ? 'Search favourites...' : 'Search tools)';
             render();
         });
 
@@ -2096,25 +2108,25 @@
             if (!p) return;
             [...pillsEl.querySelectorAll('.pill')].forEach(x => x.classList.remove('active'));
             p.classList.add('active');
-            
+
             pillsEl.prepend(p);
-            
+
             activeCat = p.dataset.cat;
-            
+
             if (activeCat !== 'all') {
                 catHistory[activeCat] = (catHistory[activeCat] || 0) + 2;
                 localStorage.setItem('catHistory', JSON.stringify(catHistory));
             }
-            
+
             appliedDoms.clear(); updateDomLbl();
             render();
         });
 
         const clearBtn = document.getElementById('clear-btn');
-        qEl.addEventListener('input', () => { 
-            searchQ = qEl.value; 
+        qEl.addEventListener('input', () => {
+            searchQ = qEl.value;
             clearBtn.classList.toggle('visible', searchQ.length > 0);
-            render(); 
+            render();
         });
         clearBtn.addEventListener('click', () => {
             qEl.value = '';
@@ -2172,7 +2184,7 @@
             const card = document.createElement('div');
             card.className = 'card';
             card.style.animationDelay = `${Math.min(idx * .026, .36)}s`;
-            
+
             // Smart Click Logic — open Detail modal for ALL cards
             card.addEventListener('click', (e) => {
                 if (e.target.closest('.fav-btn') || e.target.closest('.quick-copy-btn') || e.target.closest('.del-custom-btn')) return;
@@ -2256,25 +2268,25 @@
             // Re-attach favorite button logic after innerHTML is set
             const favBtn = card.querySelector('.fav-btn');
             favBtn.addEventListener('click', e => {
-                e.preventDefault(); 
+                e.preventDefault();
                 e.stopPropagation();
                 const k = favBtn.dataset.key;
-                if (favourites.has(k)) { 
-                    favourites.delete(k); 
-                    favBtn.classList.remove('active', 'pop'); 
-                } else { 
-                    favourites.add(k); 
-                    favBtn.classList.add('active'); 
-                    favBtn.classList.remove('pop'); 
-                    void favBtn.offsetWidth; 
-                    favBtn.classList.add('pop'); 
+                if (favourites.has(k)) {
+                    favourites.delete(k);
+                    favBtn.classList.remove('active', 'pop');
+                } else {
+                    favourites.add(k);
+                    favBtn.classList.add('active');
+                    favBtn.classList.remove('pop');
+                    void favBtn.offsetWidth;
+                    favBtn.classList.add('pop');
                 }
-                saveFavs(); 
+                saveFavs();
                 updateFavBadge();
 
                 if (activeTab === 'fav') {
                     card.style.transition = 'opacity .22s,transform .22s';
-                    card.style.opacity = '0'; 
+                    card.style.opacity = '0';
                     card.style.transform = 'scale(.95)';
                     setTimeout(() => { card.remove(); checkEmpty(); }, 240);
                 }
