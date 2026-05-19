@@ -1,0 +1,25 @@
+{
+  "name": "Dev Hub",
+  "short_name": "Dev Hub",
+  "description": "Your personal developer tools dashboard",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#3d7eff",
+  "background_color": "#0c0f1a",
+  "icons": [
+    {
+      "src": "https://www.google.com/s2/favicons?domain=github.com&sz=192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://www.google.com/s2/favicons?domain=github.com&sz=512",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["developer", "productivity", "tools"]
+}
