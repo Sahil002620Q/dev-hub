@@ -112,36 +112,26 @@
         }
 
         [data-theme="dark"] {
-            /* Change glass to be darker and more subtle against pure black */
-            --glass: rgba(15, 15, 18, 0.75);
-            --glass-hover: rgba(25, 25, 30, 0.85);
-
-            /* Main background: Pure black */
-            --bg-body: #000000;
-
-            /* Neutral dark gradients - removed the navy/blue tints */
-            --bg-grad1: rgba(0, 0, 0, 1);
-            --bg-grad2: rgba(5, 5, 5, 0.95);
-            --bg-grad3: rgba(2, 2, 2, 0.90);
-
-            /* The linear fall-back gradient */
-            --bg-lin: linear-gradient(150deg, #000000 0%, #080808 55%, #000000 100%);
-
-            /* Neutral Orbs: Using very subtle white/grey instead of blue */
-            --orb1: rgba(255, 255, 255, 0.03);
-            --orb2: rgba(255, 255, 255, 0.02);
-            --orb3: rgba(255, 255, 255, 0.02);
-
-            /* Settings and Modal Backgrounds */
-            --sp-bg: rgba(12, 12, 12, 0.98);
-
-            /* Keep other variables */
+            --glass: rgba(22, 26, 42, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(32, 38, 58, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
             --text: #e6e9f4;
             --text2: #8a90a8;
             --muted: #4e5470;
             --accent: #5b9fff;
             --accent-soft: rgba(91, 159, 255, 0.12);
             --accent-glow: rgba(91, 159, 255, 0.28);
+            --bg-body: #0c0f1a;
+            --bg-grad1: rgba(18, 30, 65, 0.90);
+            --bg-grad2: rgba(22, 16, 52, 0.85);
+            --bg-grad3: rgba(12, 35, 60, 0.80);
+            --bg-lin: linear-gradient(150deg, #0b1320 0%, #0f0e20 55%, #0a1420 100%);
+            --orb1: rgba(40, 80, 200, 0.16);
+            --orb2: rgba(70, 40, 155, 0.13);
+            --orb3: rgba(25, 95, 145, 0.13);
+            --sp-bg: rgba(14, 18, 32, 0.90);
             --sp-border: rgba(255, 255, 255, 0.07);
             --sp-row-hover: rgba(255, 255, 255, 0.035);
             --divider: rgba(255, 255, 255, 0.06);
@@ -151,6 +141,193 @@
             --fav-ring: rgba(255, 255, 255, 0.12);
             --cat-pill-bg: rgba(91, 159, 255, 0.10);
         }
+
+        [data-theme="midnight"] {
+            --glass: rgba(15, 15, 18, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(25, 25, 30, 0.85);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #e6e9f4;
+            --text2: #8a90a8;
+            --muted: #4e5470;
+            --accent: #5b9fff;
+            --accent-soft: rgba(91, 159, 255, 0.12);
+            --accent-glow: rgba(91, 159, 255, 0.28);
+            --bg-body: #000000;
+            --bg-grad1: rgba(0, 0, 0, 1);
+            --bg-grad2: rgba(5, 5, 5, 0.95);
+            --bg-grad3: rgba(2, 2, 2, 0.90);
+            --bg-lin: linear-gradient(150deg, #000000 0%, #080808 55%, #000000 100%);
+            --orb1: rgba(255, 255, 255, 0.03);
+            --orb2: rgba(255, 255, 255, 0.02);
+            --orb3: rgba(255, 255, 255, 0.02);
+            --sp-bg: rgba(12, 12, 12, 0.98);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(91, 159, 255, 0.10);
+        }
+
+        [data-theme="forest"] {
+            --glass: rgba(16, 28, 20, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(24, 38, 28, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #e2ecd6;
+            --text2: #92a488;
+            --muted: #5e7054;
+            --accent: #10b981;
+            --accent-soft: rgba(16, 185, 129, 0.12);
+            --accent-glow: rgba(16, 185, 129, 0.28);
+            --bg-body: #0a120c;
+            --bg-grad1: rgba(10, 45, 25, 0.90);
+            --bg-grad2: rgba(15, 30, 20, 0.85);
+            --bg-grad3: rgba(5, 25, 15, 0.80);
+            --bg-lin: linear-gradient(150deg, #081109 0%, #0c180e 55%, #051006 100%);
+            --orb1: rgba(40, 200, 100, 0.16);
+            --orb2: rgba(70, 155, 90, 0.13);
+            --orb3: rgba(25, 145, 75, 0.13);
+            --sp-bg: rgba(10, 20, 14, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(16, 185, 129, 0.10);
+        }
+
+        [data-theme="sunset"] {
+            --glass: rgba(32, 18, 18, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(42, 24, 24, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #f0e0df;
+            --text2: #a89090;
+            --muted: #705050;
+            --accent: #f59e0b;
+            --accent-soft: rgba(245, 158, 11, 0.12);
+            --accent-glow: rgba(245, 158, 11, 0.28);
+            --bg-body: #160a0a;
+            --bg-grad1: rgba(65, 20, 20, 0.90);
+            --bg-grad2: rgba(45, 15, 25, 0.85);
+            --bg-grad3: rgba(35, 10, 15, 0.80);
+            --bg-lin: linear-gradient(150deg, #180b0b 0%, #201010 55%, #150808 100%);
+            --orb1: rgba(200, 60, 40, 0.16);
+            --orb2: rgba(180, 50, 90, 0.13);
+            --orb3: rgba(145, 40, 60, 0.13);
+            --sp-bg: rgba(22, 12, 12, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(245, 158, 11, 0.10);
+        }
+
+        [data-theme="ocean"] {
+            --glass: rgba(10, 20, 32, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(15, 30, 45, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #d0e4f5;
+            --text2: #84a8cc;
+            --muted: #4e6f92;
+            --accent: #3b82f6;
+            --accent-soft: rgba(59, 130, 246, 0.12);
+            --accent-glow: rgba(59, 130, 246, 0.28);
+            --bg-body: #050a12;
+            --bg-grad1: rgba(10, 30, 60, 0.90);
+            --bg-grad2: rgba(5, 20, 40, 0.85);
+            --bg-grad3: rgba(15, 25, 50, 0.80);
+            --bg-lin: linear-gradient(150deg, #040810 0%, #06101c 55%, #03060a 100%);
+            --orb1: rgba(30, 100, 255, 0.16);
+            --orb2: rgba(40, 150, 220, 0.13);
+            --orb3: rgba(20, 180, 200, 0.13);
+            --sp-bg: rgba(8, 16, 26, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(59, 130, 246, 0.10);
+        }
+
+        [data-theme="slate"] {
+            --glass: rgba(30, 40, 50, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(40, 50, 65, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #e2e8f0;
+            --text2: #94a3b8;
+            --muted: #64748b;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.12);
+            --accent-glow: rgba(56, 189, 248, 0.28);
+            --bg-body: #0f172a;
+            --bg-grad1: rgba(30, 41, 59, 0.90);
+            --bg-grad2: rgba(15, 23, 42, 0.85);
+            --bg-grad3: rgba(20, 30, 45, 0.80);
+            --bg-lin: linear-gradient(150deg, #0f172a 0%, #1e293b 55%, #020617 100%);
+            --orb1: rgba(56, 189, 248, 0.16);
+            --orb2: rgba(99, 102, 241, 0.13);
+            --orb3: rgba(14, 165, 233, 0.13);
+            --sp-bg: rgba(15, 23, 42, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(56, 189, 248, 0.10);
+        }
+
+        [data-theme="rose"] {
+            --glass: rgba(255, 240, 245, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.75);
+            --glass-hover: rgba(255, 245, 250, 0.78);
+            --shadow: 0 2px 16px rgba(170, 90, 110, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 8px 32px rgba(170, 90, 110, 0.15), 0 2px 8px rgba(0, 0, 0, 0.06);
+            --text: #3f1d25;
+            --text2: #7a5058;
+            --muted: #bda2a8;
+            --accent: #f43f5e;
+            --accent-soft: rgba(244, 63, 94, 0.10);
+            --accent-glow: rgba(244, 63, 94, 0.22);
+            --bg-body: #fdf2f8;
+            --bg-grad1: #fbcfe8;
+            --bg-grad2: #fce7f3;
+            --bg-grad3: #f9a8d4;
+            --bg-lin: linear-gradient(150deg, #fdf2f8 0%, #fbcfe8 55%, #f472b6 100%);
+            --orb1: rgba(244, 63, 94, 0.18);
+            --orb2: rgba(225, 29, 72, 0.15);
+            --orb3: rgba(251, 113, 133, 0.14);
+            --sp-bg: rgba(255, 255, 255, 0.80);
+            --sp-border: rgba(255, 255, 255, 0.92);
+            --sp-row-hover: rgba(255, 255, 255, 0.48);
+            --divider: rgba(0, 0, 0, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.50);
+            --pill-border: rgba(255, 255, 255, 0.75);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(0, 0, 0, 0.10);
+            --cat-pill-bg: rgba(244, 63, 94, 0.08);
+        }
+
 
         .orb {
             position: fixed;
@@ -1893,46 +2070,46 @@
             <div class="sp-row">
                 <div class="sp-label">
                     <span>Appearance</span>
-                    <span id="theme-lbl">Light mode</span>
+                    <span id="mode-lbl">Light mode</span>
                 </div>
                 <label class="theme-switch">
                     <input type="checkbox" id="theme-chk">
                     <div class="sw-track"></div>
                     <div class="sw-thumb">
-                        <div class="sw-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.2" stroke-linecap="round">
-                                <circle cx="12" cy="12" r="4" />
-                                <line x1="12" y1="2" x2="12" y2="5" />
-                                <line x1="12" y1="19" x2="12" y2="22" />
-                                <line x1="2" y1="12" x2="5" y2="12" />
-                                <line x1="19" y1="12" x2="22" y2="12" />
-                                <line x1="4.93" y1="4.93" x2="7.05" y2="7.05" />
-                                <line x1="16.95" y1="16.95" x2="19.07" y2="19.07" />
-                                <line x1="4.93" y1="19.07" x2="7.05" y2="16.95" />
-                                <line x1="16.95" y1="7.05" x2="19.07" y2="4.93" />
-                            </svg></div>
+                        <div class="sw-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="4" />
+                            <line x1="12" y1="2" x2="12" y2="5" />
+                            <line x1="12" y1="19" x2="12" y2="22" />
+                            <line x1="2" y1="12" x2="5" y2="12" />
+                            <line x1="19" y1="12" x2="22" y2="12" />
+                            <line x1="4.93" y1="4.93" x2="7.05" y2="7.05" />
+                            <line x1="16.95" y1="16.95" x2="19.07" y2="19.07" />
+                            <line x1="4.93" y1="19.07" x2="7.05" y2="16.95" />
+                            <line x1="16.95" y1="7.05" x2="19.07" y2="4.93" />
+                        </svg></div>
                         <div class="sw-moon"><svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
-                            </svg></div>
+                            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                        </svg></div>
                     </div>
                 </label>
             </div>
             <div class="sp-divider"></div>
             <div class="sp-row">
-                <div class="sp-label"><span>Accent</span><span id="accent-lbl">Blue</span></div>
-                <div class="accent-dots" id="accent-dots">
-                    <div class="a-dot active" data-color="#3d7eff" data-name="Blue" style="background:#3d7eff"
-                        title="Blue"></div>
-                    <div class="a-dot" data-color="#10b981" data-name="Green" style="background:#10b981" title="Green">
-                    </div>
-                    <div class="a-dot" data-color="#f59e0b" data-name="Amber" style="background:#f59e0b" title="Amber">
-                    </div>
-                    <div class="a-dot" data-color="#ec4899" data-name="Pink" style="background:#ec4899" title="Pink">
-                    </div>
-                    <div class="a-dot" data-color="#8b5cf6" data-name="Violet" style="background:#8b5cf6"
-                        title="Violet"></div>
+                <div class="sp-label">
+                    <span>Theme</span>
                 </div>
+                <select class="sp-select" id="theme-sel">
+                    <option value="light">Classic Light</option>
+                    <option value="rose">Rose (Light)</option>
+                    <option value="dark">Classic Dark</option>
+                    <option value="slate">Slate (Dark)</option>
+                    <option value="midnight">Midnight</option>
+                    <option value="forest">Forest</option>
+                    <option value="ocean">Ocean</option>
+                    <option value="sunset">Sunset</option>
+                </select>
             </div>
+
             <div class="sp-divider"></div>
             <div class="sp-row">
                 <div class="sp-label"><span>Card Size</span><span id="dens-lbl">Comfortable</span></div>
@@ -2194,8 +2371,8 @@
         const settBtn = document.getElementById('settings-btn');
         const spClose = document.getElementById('sp-close');
         const themeChk = document.getElementById('theme-chk');
-        const themeLbl = document.getElementById('theme-lbl');
-        const accentLbl = document.getElementById('accent-lbl');
+        const themeSel = document.getElementById('theme-sel');
+        const modeLbl = document.getElementById('mode-lbl');
         const densSel = document.getElementById('dens-sel');
         const densLbl = document.getElementById('dens-lbl');
         const badgeAll = document.getElementById('badge-all');
@@ -2243,26 +2420,30 @@
         document.addEventListener('click', e => { if (spOpen && !sp.contains(e.target) && e.target !== settBtn) closeSP(); });
 
         /* ══ THEME ══ */
-        const applyTheme = dark => {
-            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-            themeLbl.textContent = dark ? 'Dark mode' : 'Light mode';
-            localStorage.setItem('theme', dark ? 'dark' : 'light');
-        };
-        themeChk.addEventListener('change', () => applyTheme(themeChk.checked));
-        if (localStorage.getItem('theme') === 'dark') { themeChk.checked = true; applyTheme(true); }
+        const applyTheme = () => {
+            const isDark = themeChk.checked;
+            const selTheme = themeSel.value;
+            const themeToApply = isDark ? 'midnight' : selTheme;
+            
+            document.documentElement.setAttribute('data-theme', themeToApply);
+            
+            modeLbl.textContent = isDark ? 'Dark mode' : 'Custom Theme';
+            
+            themeSel.disabled = isDark;
+            themeSel.style.opacity = isDark ? '0.5' : '1';
 
-        /* ══ ACCENT ══ */
-        const setAccent = (color, name) => {
-            document.documentElement.style.setProperty('--accent', color);
-            document.documentElement.style.setProperty('--accent-soft', color + '18');
-            document.documentElement.style.setProperty('--accent-glow', color + '3a');
-            accentLbl.textContent = name;
-            document.querySelectorAll('.a-dot').forEach(d => d.classList.toggle('active', d.dataset.color === color));
-            localStorage.setItem('accent', color); localStorage.setItem('accentName', name);
+            localStorage.setItem('themeIsDark', isDark);
+            localStorage.setItem('themeSelValue', selTheme);
         };
-        document.querySelectorAll('.a-dot').forEach(d => d.addEventListener('click', () => setAccent(d.dataset.color, d.dataset.name)));
-        const sa = localStorage.getItem('accent');
-        if (sa) setAccent(sa, localStorage.getItem('accentName') || 'Custom');
+        themeChk.addEventListener('change', applyTheme);
+        themeSel.addEventListener('change', applyTheme);
+        
+        const savedIsDark = localStorage.getItem('themeIsDark') === 'true';
+        const savedSel = localStorage.getItem('themeSelValue') || 'light';
+        themeChk.checked = savedIsDark;
+        themeSel.value = savedSel;
+        applyTheme();
+
 
         /* ══ DENSITY ══ */
         const setDensity = v => {
