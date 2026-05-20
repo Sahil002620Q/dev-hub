@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Hub</title>
-    <meta name="description" content="Your personal developer tools dashboard — search, favourite and launch 100+ dev tools instantly.">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#3d7eff" id="theme-color-meta">
+    <meta name="theme-color" content="#0e1223">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
@@ -531,252 +530,6 @@
         }
 
         /* ═══════════════════════════════════════════
-   SKELETON LOADING
-═══════════════════════════════════════════ */
-        @keyframes shimmer {
-            0% { background-position: -400px 0; }
-            100% { background-position: 400px 0; }
-        }
-
-        .skeleton-card {
-            border-radius: var(--radius);
-            background: var(--glass);
-            border: 1.5px solid var(--glass-border);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            min-height: 130px;
-        }
-
-        .skeleton-strip {
-            height: 2.5px;
-            background: linear-gradient(90deg,
-                var(--glass-border) 25%,
-                rgba(200,210,255,0.35) 50%,
-                var(--glass-border) 75%);
-            background-size: 400px 100%;
-            animation: shimmer 1.4s ease-in-out infinite;
-        }
-
-        .skeleton-body {
-            padding: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            flex: 1;
-        }
-
-        .skeleton-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .skel {
-            border-radius: 8px;
-            background: linear-gradient(90deg,
-                var(--glass-border) 25%,
-                rgba(200,210,255,0.25) 50%,
-                var(--glass-border) 75%);
-            background-size: 400px 100%;
-            animation: shimmer 1.4s ease-in-out infinite;
-        }
-
-        [data-theme="dark"] .skel,
-        [data-theme="dark"] .skeleton-strip {
-            background: linear-gradient(90deg,
-                rgba(255,255,255,0.05) 25%,
-                rgba(255,255,255,0.12) 50%,
-                rgba(255,255,255,0.05) 75%);
-            background-size: 400px 100%;
-            animation: shimmer 1.4s ease-in-out infinite;
-        }
-
-        .skel-logo  { width:32px; height:32px; border-radius:8px; flex-shrink:0; }
-        .skel-title { height:12px; flex:1; border-radius:6px; }
-        .skel-desc  { height:10px; width:85%; border-radius:6px; }
-        .skel-desc2 { height:10px; width:60%; border-radius:6px; }
-        .skel-pill  { height:16px; width:50px; border-radius:20px; margin-top:auto; }
-
-        /* ═══════════════════════════════════════════
-   RECENT STRIP
-═══════════════════════════════════════════ */
-        .recent-section {
-            margin-bottom: 10px;
-            display: none; /* shown via JS */
-        }
-
-        .recent-label {
-            font-size: 0.68rem;
-            font-weight: 600;
-            color: var(--muted);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-family: 'DM Mono', monospace;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 7px;
-        }
-
-        .recent-label svg {
-            width: 11px;
-            height: 11px;
-        }
-
-        .recent-strip {
-            display: flex;
-            gap: 7px;
-            overflow-x: auto;
-            padding-bottom: 4px;
-            scrollbar-width: none;
-        }
-
-        .recent-strip::-webkit-scrollbar { display: none; }
-
-        .recent-chip {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px 5px 7px;
-            border-radius: 30px;
-            background: var(--glass);
-            border: 1.5px solid var(--glass-border);
-            cursor: pointer;
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--text);
-            white-space: nowrap;
-            transition: background .18s, border-color .18s, transform .18s;
-            backdrop-filter: blur(12px);
-            flex-shrink: 0;
-        }
-
-        .recent-chip:hover {
-            background: var(--glass-hover);
-            border-color: var(--accent);
-            transform: scale(1.04);
-        }
-
-        .recent-chip img {
-            width: 14px;
-            height: 14px;
-            object-fit: contain;
-            border-radius: 3px;
-        }
-
-        .recent-chip .chip-fb {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.55rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* ═══════════════════════════════════════════
-   LIST VIEW
-═══════════════════════════════════════════ */
-        .grid.list-view {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .grid.list-view .card {
-            flex-direction: row;
-            align-items: center;
-            min-height: 52px;
-            animation: none;
-            border-radius: 12px;
-        }
-
-        .grid.list-view .card-strip {
-            width: 3px;
-            height: 100%;
-            flex-shrink: 0;
-        }
-
-        .grid.list-view .card-body {
-            flex-direction: row;
-            align-items: center;
-            padding: 10px 12px;
-            gap: 10px;
-            flex: 1;
-        }
-
-        .grid.list-view .card-head {
-            flex-shrink: 0;
-            gap: 8px;
-        }
-
-        .grid.list-view .card-name {
-            white-space: nowrap;
-            min-width: 90px;
-            max-width: 130px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 0.8rem;
-        }
-
-        .grid.list-view .card-desc {
-            flex: 1;
-            -webkit-line-clamp: 1;
-            min-height: unset;
-            font-size: 0.7rem;
-        }
-
-        .grid.list-view .card-footer {
-            flex-shrink: 0;
-            margin-top: 0;
-        }
-
-        /* view toggle button */
-        .view-toggle-btn {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            border: 1.5px solid var(--glass-border);
-            background: var(--glass);
-            color: var(--text2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all .18s;
-            flex-shrink: 0;
-        }
-
-        .view-toggle-btn:hover,
-        .view-toggle-btn.active {
-            background: var(--accent-soft);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .view-toggle-btn svg { width: 14px; height: 14px; }
-
-        /* add-similar button in detail footer */
-        .add-similar-btn {
-            padding: 11px 14px;
-            border-radius: 12px;
-            background: var(--glass);
-            color: var(--accent);
-            border: 1.5px solid var(--accent);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background .18s, transform .15s;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .add-similar-btn:hover {
-            background: var(--accent-soft);
-            transform: translateY(-1px);
-        }
-
-        /* ═══════════════════════════════════════════
    CARD — redesigned
 ═══════════════════════════════════════════ */
         .card {
@@ -796,13 +549,14 @@
             animation: fadeUp .3s both;
             overflow: hidden;
             cursor: pointer;
+            --cat-color: rgba(61, 126, 255, 0.4);
         }
 
         .card:hover {
             transform: translateY(-3px) scale(1.01);
             background: var(--glass-hover);
-            box-shadow: 0 8px 32px var(--card-glow, rgba(61,126,255,0.18)), 0 2px 8px rgba(0,0,0,0.06);
-            border-color: var(--card-ring, rgba(61,126,255,0.25));
+            box-shadow: 0 8px 24px -8px var(--cat-color), var(--shadow-hover);
+            border-color: var(--cat-color);
         }
 
         @keyframes fadeUp {
@@ -955,6 +709,10 @@
         }
 
         .fav-btn svg {
+            color: var(--muted);
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
             width: 13px;
             height: 13px;
             display: block;
@@ -977,25 +735,124 @@
 
         /* heart pop animation */
         @keyframes heartPop {
-            0% {
-                transform: scale(1)
-            }
-
-            40% {
-                transform: scale(1.45)
-            }
-
-            70% {
-                transform: scale(0.9)
-            }
-
-            100% {
-                transform: scale(1)
-            }
+            0% { transform: scale(1) }
+            40% { transform: scale(1.45) }
+            70% { transform: scale(0.9) }
+            100% { transform: scale(1) }
         }
 
         .fav-btn.pop svg {
             animation: heartPop .35s cubic-bezier(.34, 1.5, .64, 1);
+        }
+
+        /* ── SKELETON LOADER ── */
+        .skeleton {
+            background: linear-gradient(90deg, var(--glass-border) 25%, var(--glass-hover) 50%, var(--glass-border) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-load 1.5s infinite linear;
+            border-radius: 4px;
+        }
+        [data-theme="dark"] .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+            background-size: 200% 100%;
+        }
+
+        @keyframes skeleton-load {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skel-card {
+            pointer-events: none;
+        }
+        .skel-logo { width: 32px; height: 32px; border-radius: 8px; }
+        .skel-title { width: 60%; height: 14px; margin-bottom: 2px; }
+        .skel-desc { width: 90%; height: 10px; margin-bottom: 6px; }
+        .skel-desc-2 { width: 70%; height: 10px; }
+        .skel-pill { width: 40px; height: 16px; border-radius: 12px; }
+        .skel-btn { width: 26px; height: 26px; border-radius: 50%; }
+
+        /* ── LIST VIEW MODE ── */
+        .grid.list-view {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        .grid.list-view .card {
+            flex-direction: row;
+            align-items: center;
+            padding-right: 14px;
+        }
+        .grid.list-view .card-strip {
+            width: 4px;
+            height: auto;
+            align-self: stretch;
+            background: var(--cat-color) !important;
+            opacity: 1 !important;
+        }
+        .grid.list-view .card-body {
+            flex-direction: row;
+            align-items: center;
+            padding: 10px 14px 10px 10px;
+            width: 100%;
+            gap: 16px;
+        }
+        .grid.list-view .card-head {
+            width: 200px;
+            flex-shrink: 0;
+        }
+        .grid.list-view .card-desc {
+            -webkit-line-clamp: 1;
+            min-height: auto;
+            margin: 0;
+        }
+        .grid.list-view .card-footer {
+            margin-top: 0;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        
+        @media(max-width: 600px) {
+            .grid.list-view .card-body {
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 12px;
+            }
+            .grid.list-view .card-head {
+                width: 100%;
+            }
+            .grid.list-view .card-desc {
+                -webkit-line-clamp: 2;
+                margin-bottom: 4px;
+                width: 100%;
+            }
+            .grid.list-view .card-footer {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* ── RECENT SECTION ── */
+        .recent-section {
+            margin-bottom: 24px;
+        }
+        .recent-header {
+            margin-bottom: 12px;
+            padding-left: 4px;
+        }
+        .recent-grid {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            scroll-snap-type: x mandatory;
+        }
+        .recent-grid::-webkit-scrollbar { height: 4px; }
+        .recent-grid::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 4px; }
+        .recent-grid::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
+        .recent-grid .card {
+            min-width: 240px;
+            max-width: 240px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
         }
 
         /* ── QUICK COPY BUTTON ── */
@@ -1899,25 +1756,16 @@
                 </button>
             </div>
             <div class="topbar-right">
+                <button class="icon-btn" id="view-btn" title="Toggle List View">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
                 <button class="domain-trigger" id="domain-btn">
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
                         <path d="M4 6h12M6 10h8M8 14h4" />
                     </svg>
                     <span id="domain-lbl">Domains</span>
-                </button>
-                <!-- View Toggle -->
-                <button class="view-toggle-btn" id="view-toggle" title="Toggle list / grid view">
-                    <svg id="view-icon-grid" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <rect x="2" y="2" width="7" height="7" rx="1.5"/>
-                        <rect x="11" y="2" width="7" height="7" rx="1.5"/>
-                        <rect x="2" y="11" width="7" height="7" rx="1.5"/>
-                        <rect x="11" y="11" width="7" height="7" rx="1.5"/>
-                    </svg>
-                    <svg id="view-icon-list" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none">
-                        <line x1="2" y1="5" x2="18" y2="5"/>
-                        <line x1="2" y1="10" x2="18" y2="10"/>
-                        <line x1="2" y1="15" x2="18" y2="15"/>
-                    </svg>
                 </button>
                 <button class="icon-btn" id="settings-btn" title="Settings">
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7">
@@ -1961,23 +1809,68 @@
                 onclick="document.getElementById('pills').classList.remove('expanded')">&lt;</div>
         </div>
 
-        <div class="meta-row">
-            <div class="meta" id="meta">0 tools</div>
+        <div class="recent-section" id="recent-section" style="display:none;">
+            <div class="recent-header">
+                <span class="sp-title" style="font-size:0.8rem;color:var(--text);font-weight:600;">Recently Used</span>
+            </div>
+            <div class="recent-grid" id="recent-grid"></div>
         </div>
 
-        <!-- RECENTLY VISITED -->
-        <div class="recent-section" id="recent-section">
-            <div class="recent-label">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                </svg>
-                Recently Visited
-            </div>
-            <div class="recent-strip" id="recent-strip"></div>
+        <div class="meta-row">
+            <div class="meta" id="meta">Loading...</div>
         </div>
 
         <div class="grid" id="grid">
+            <!-- SKELETON CARDS -->
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+
             <div class="empty-state" id="empty-state">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                     <circle cx="11" cy="11" r="8" />
@@ -2222,8 +2115,8 @@
                 </div>
             </div>
             <div class="detail-footer">
+                <button class="pill" id="detail-suggest-btn" style="border:1.5px dashed var(--glass-border);background:var(--glass);color:var(--muted);width:auto;padding:0 14px;">Suggest Similar</button>
                 <a class="visit-btn" id="detail-visit-btn" href="#" target="_blank" rel="noopener">Visit Site ↗</a>
-                <button class="add-similar-btn" id="detail-similar-btn">+ Add Similar</button>
             </div>
         </div>
     </div>
@@ -2304,22 +2197,31 @@
         const btnConfirm = document.getElementById('btn-confirm');
         const domBtn = document.getElementById('domain-btn');
         const domLbl = document.getElementById('domain-lbl');
-        const viewToggle = document.getElementById('view-toggle');
-        const recentSection = document.getElementById('recent-section');
-        const recentStrip = document.getElementById('recent-strip');
+        const viewBtn = document.getElementById('view-btn');
 
         /* ══ HELPERS ══ */
         const getDomain = u => { try { return new URL(u).hostname.replace('www.', '') } catch { return '' } };
         const initials = n => n.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
         const siteKey = s => s.url;
 
-        /* hex color → rgba glow helper */
-        const hexToRgba = (hex, a) => {
-            const r = parseInt(hex.slice(1,3),16);
-            const g = parseInt(hex.slice(3,5),16);
-            const b = parseInt(hex.slice(5,7),16);
-            return `rgba(${r},${g},${b},${a})`;
-        };
+        /* ══ VIEW TOGGLE ══ */
+        let isListView = localStorage.getItem('listView') === 'true';
+        if (isListView) grid.classList.add('list-view');
+        
+        viewBtn.addEventListener('click', () => {
+            isListView = !isListView;
+            grid.classList.toggle('list-view', isListView);
+            localStorage.setItem('listView', isListView);
+            
+            // Swap icon
+            viewBtn.innerHTML = isListView 
+                ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>` 
+                : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        });
+        // Set initial icon
+        if (isListView) {
+            viewBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`;
+        }
 
         /* ══ SETTINGS PANEL ══ */
         let spOpen = false;
@@ -2353,9 +2255,7 @@
 
         /* ══ DENSITY ══ */
         const setDensity = v => {
-            if (!grid.classList.contains('list-view')) {
-                grid.style.gridTemplateColumns = `repeat(auto-fill,minmax(${v}px,1fr))`;
-            }
+            grid.style.gridTemplateColumns = `repeat(auto-fill,minmax(${v}px,1fr))`;
             const m = { '200': 'Comfortable', '160': 'Compact', '248': 'Spacious' };
             densLbl.textContent = m[v] || v + 'px';
             localStorage.setItem('density', v);
@@ -2473,9 +2373,7 @@
             const card = document.createElement('div');
             card.className = 'card';
             card.style.animationDelay = `${Math.min(idx * .026, .36)}s`;
-            // Per-category glow on hover
-            card.style.setProperty('--card-glow', hexToRgba(color, 0.22));
-            card.style.setProperty('--card-ring', hexToRgba(color, 0.30));
+            card.style.setProperty('--cat-color', color);
 
             // Smart Click Logic — open Detail modal for ALL cards
             card.addEventListener('click', (e) => {
@@ -2484,7 +2382,8 @@
                 catHistory[s.cat] = (catHistory[s.cat] || 0) + 1;
                 localStorage.setItem('catHistory', JSON.stringify(catHistory));
 
-                addToRecent(s);
+                updateRecentTools(s);
+
                 openDetailModal(s);
             });
 
@@ -2595,6 +2494,34 @@
             favEmpty.style.display = (inFavTab && cards.length === 0) ? 'block' : 'none';
         }
 
+        /* ══ RECENT TOOLS LOGIC ══ */
+        let recentTools = JSON.parse(localStorage.getItem('recentTools') || '[]');
+        const recentSection = document.getElementById('recent-section');
+        const recentGrid = document.getElementById('recent-grid');
+
+        function updateRecentTools(s) {
+            recentTools = recentTools.filter(url => url !== s.url);
+            recentTools.unshift(s.url);
+            if (recentTools.length > 5) recentTools.pop();
+            localStorage.setItem('recentTools', JSON.stringify(recentTools));
+            renderRecent();
+        }
+
+        function renderRecent() {
+            if (activeTab !== 'all' || searchQ.length > 0 || appliedDoms.size > 0 || activeCat !== 'all' || recentTools.length === 0) {
+                recentSection.style.display = 'none';
+                return;
+            }
+            recentSection.style.display = 'block';
+            recentGrid.innerHTML = '';
+            recentTools.forEach(url => {
+                const s = sites.find(x => x.url === url);
+                if (s) {
+                    recentGrid.appendChild(makeCard(s, 0));
+                }
+            });
+        }
+
         /* ══ RENDER ══ */
         function render() {
             const lq = searchQ.toLowerCase();
@@ -2635,6 +2562,7 @@
             filtered.forEach((s, i) => grid.insertBefore(makeCard(s, i), emptyState));
 
             checkEmpty();
+            renderRecent();
         }
 
         /* ══ REBUILD SITES (merge base + custom) ══ */
@@ -2781,21 +2709,13 @@
             detailModal.classList.remove('hidden');
         }
 
-        /* ══ ADD SIMILAR BUTTON ══ */
-        document.getElementById('detail-similar-btn').addEventListener('click', () => {
+        // Suggest Similar Button logic
+        document.getElementById('detail-suggest-btn').addEventListener('click', () => {
             detailModal.classList.add('hidden');
-            const atCat = document.getElementById('at-cat');
-            if (atCat && _detailSite) atCat.value = _detailSite.cat;
-            const atName = document.getElementById('at-name');
-            const atUrl = document.getElementById('at-url');
-            const atDesc = document.getElementById('at-desc');
-            const atError = document.getElementById('at-error');
-            if (atName) atName.value = '';
-            if (atUrl) atUrl.value = '';
-            if (atDesc) atDesc.value = '';
-            if (atError) atError.style.display = 'none';
-            document.getElementById('add-tool-modal').classList.remove('hidden');
-            setTimeout(() => { if (atName) atName.focus(); }, 100);
+            atName.value = ''; atUrl.value = ''; atDesc.value = ''; atError.style.display = 'none';
+            if (_detailSite && _detailSite.cat) atCat.value = _detailSite.cat;
+            addToolModal.classList.remove('hidden');
+            setTimeout(() => atName.focus(), 100);
         });
 
         //by me 
@@ -2823,112 +2743,23 @@
             });
         }
 
-        /* ══ VIEW TOGGLE (Grid / List) ══ */
-        let isListView = localStorage.getItem('viewMode') === 'list';
-        const applyViewMode = () => {
-            if (isListView) {
-                grid.classList.add('list-view');
-                grid.style.gridTemplateColumns = '';
-                document.getElementById('view-icon-grid').style.display = '';
-                document.getElementById('view-icon-list').style.display = 'none';
-                viewToggle.classList.add('active');
-            } else {
-                grid.classList.remove('list-view');
-                const sd2 = localStorage.getItem('density') || '200';
-                grid.style.gridTemplateColumns = `repeat(auto-fill,minmax(${sd2}px,1fr))`;
-                document.getElementById('view-icon-grid').style.display = 'none';
-                document.getElementById('view-icon-list').style.display = '';
-                viewToggle.classList.remove('active');
-            }
-        };
-        viewToggle.addEventListener('click', () => {
-            isListView = !isListView;
-            localStorage.setItem('viewMode', isListView ? 'list' : 'grid');
-            applyViewMode();
-        });
-        applyViewMode();
-
-        /* ══ RECENT VISITED STRIP ══ */
-        let recentTools = JSON.parse(localStorage.getItem('recentTools') || '[]');
-        const saveRecent = () => localStorage.setItem('recentTools', JSON.stringify(recentTools));
-
-        function addToRecent(s) {
-            const key = siteKey(s);
-            recentTools = recentTools.filter(k => k !== key);
-            recentTools.unshift(key);
-            if (recentTools.length > 5) recentTools = recentTools.slice(0, 5);
-            saveRecent();
-            renderRecentStrip();
-        }
-
-        function renderRecentStrip() {
-            recentStrip.innerHTML = '';
-            const recSites = recentTools
-                .map(key => sites.find(s => siteKey(s) === key))
-                .filter(Boolean);
-            if (recSites.length === 0) { recentSection.style.display = 'none'; return; }
-            recentSection.style.display = 'block';
-            recSites.forEach(s => {
-                const domain = getDomain(s.url);
-                const chip = document.createElement('div');
-                chip.className = 'recent-chip';
-                chip.title = s.name;
-                chip.innerHTML = `
-                    <img src="${s.logo || FAV_API(domain)}" alt="" loading="lazy"
-                        onerror="this.style.display='none';this.nextElementSibling.style.display=''">
-                    <span class="chip-fb" style="display:none">${initials(s.name)}</span>
-                    ${s.name}
-                `;
-                chip.addEventListener('click', () => openDetailModal(s));
-                recentStrip.appendChild(chip);
-            });
-        }
-
-        /* ══ SKELETON LOADER ══ */
-        function renderSkeletons(n) {
-            grid.innerHTML = '';
-            for (let i = 0; i < n; i++) {
-                const sk = document.createElement('div');
-                sk.className = 'skeleton-card';
-                sk.innerHTML = `
-                    <div class="skeleton-strip"></div>
-                    <div class="skeleton-body">
-                        <div class="skeleton-row">
-                            <div class="skel skel-logo"></div>
-                            <div class="skel skel-title"></div>
-                        </div>
-                        <div class="skel skel-desc"></div>
-                        <div class="skel skel-desc2"></div>
-                        <div class="skeleton-row" style="margin-top:auto;justify-content:space-between">
-                            <div class="skel skel-pill"></div>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(sk);
-            }
-        }
-
-        /* ══ BOOT: show skeletons, then fetch tools.json ══ */
-        renderSkeletons(12);
+        /* ══ BOOT: fetch tools.json then init ══ */
         fetch('tools.json')
             .then(r => r.json())
             .then(data => {
                 window._baseSites = data;
                 rebuildSites();
                 updateFavBadge();
-                renderRecentStrip();
                 render();
             })
             .catch(() => {
+                // fallback: graceful error
                 grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:40px">Failed to load tools. Please refresh.</p>';
             });
 
-        /* ══ PWA: register service worker ══ */
+        // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .catch(() => {}); // silently ignore if blocked
-            });
+            navigator.serviceWorker.register('sw.js').catch(console.error);
         }
     </script>
 </body>
