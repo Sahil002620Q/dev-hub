@@ -537,7 +537,7 @@
         }
 
         .domain-trigger {
-            padding: 10px 16px;
+            padding: 7px 16px;
             border-radius: 50px;
             border: 1.5px solid var(--glass-border);
             background: var(--glass);
@@ -574,12 +574,19 @@
         }
 
         /* ── SECTION TABS ── */
-        .nav-tabs {
+        .nav-tabs-wrapper {
             display: flex;
-            gap: 2px;
+            justify-content: space-between;
+            align-items: center;
             padding-bottom: 22px;
             border-bottom: 1.5px solid var(--divider);
             margin-bottom: 18px;
+            gap: 16px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 2px;
         }
 
         .nav-tab {
@@ -1008,16 +1015,71 @@
         }
 
         /* ── HISTORY MODAL STYLES ── */
-        #history-grid .card {
-            flex-direction: row;
+        .history-row {
+            display: flex;
             align-items: center;
-            padding-right: 10px;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            transition: background .15s;
+            cursor: pointer;
         }
-        #history-grid .card-strip { width: 4px; height: auto; align-self: stretch; background: var(--cat-color) !important; opacity: 1 !important; }
-        #history-grid .card-body { flex-direction: row; align-items: center; padding: 8px 10px; width: 100%; gap: 12px; }
-        #history-grid .card-head { width: auto; flex: 1; min-width: 0; }
-        #history-grid .card-desc { display: none; }
-        #history-grid .card-footer { margin-top: 0; margin-left: auto; flex-shrink: 0; }
+        .history-row:hover {
+            background: var(--glass-hover);
+        }
+        .history-row .h-strip {
+            width: 4px;
+            height: 32px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .history-row .h-logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .history-row .h-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .history-row .h-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .history-row .h-url {
+            font-size: 0.65rem;
+            font-family: 'DM Mono', monospace;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .history-row .h-open-btn {
+            padding: 5px 12px;
+            border-radius: 50px;
+            border: 1.5px solid var(--glass-border);
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all .15s;
+        }
+        .history-row .h-open-btn:hover {
+            background: var(--accent);
+            color: #fff;
+        }
 
 
         /* ── QUICK COPY BUTTON ── */
@@ -1853,11 +1915,19 @@
                 width: 256px;
             }
 
+            .nav-tabs-wrapper {
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+
             .nav-tabs {
                 gap: 0;
                 overflow-x: auto;
-                padding-bottom: 12px;
-                margin-bottom: 16px;
+                scrollbar-width: none;
+            }
+            
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
             }
 
             .pills {
@@ -1940,12 +2010,7 @@
                         <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
-                <button class="domain-trigger" id="domain-btn">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <path d="M4 6h12M6 10h8M8 14h4" />
-                    </svg>
-                    <span id="domain-lbl">Domains</span>
-                </button>
+
                 <button class="icon-btn" id="settings-btn" title="Settings">
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7">
                         <circle cx="10" cy="10" r="2.4" />
@@ -1956,16 +2021,25 @@
             </div>
         </div>
 
-        <!-- SECTION TABS -->
-        <div class="nav-tabs" id="nav-tabs">
-            <div class="nav-tab active" data-tab="all">All tools <span class="badge" id="badge-all">0</span></div>
-            <div class="nav-tab" data-tab="fav">
-                <svg viewBox="0 0 20 20" width="13" height="13" fill="currentColor">
-                    <path
-                        d="M10 3.22l1.97 3.99 4.4.64-3.18 3.1.75 4.38L10 13.15l-3.94 2.07.75-4.38L3.63 7.85l4.4-.64L10 3.22z" />
-                </svg>
-                Favourites <span class="badge" id="badge-fav">0</span>
+        <!-- SECTION TABS ROW -->
+        <div class="nav-tabs-wrapper" id="nav-tabs-wrapper">
+            <div class="nav-tabs" id="nav-tabs">
+                <div class="nav-tab active" data-tab="all">All tools <span class="badge" id="badge-all">0</span></div>
+                <div class="nav-tab" data-tab="fav">
+                    <svg viewBox="0 0 20 20" width="13" height="13" fill="currentColor">
+                        <path
+                            d="M10 3.22l1.97 3.99 4.4.64-3.18 3.1.75 4.38L10 13.15l-3.94 2.07.75-4.38L3.63 7.85l4.4-.64L10 3.22z" />
+                    </svg>
+                    Favourites <span class="badge" id="badge-fav">0</span>
+                </div>
             </div>
+
+            <button class="domain-trigger" id="domain-btn">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M4 6h12M6 10h8M8 14h4" />
+                </svg>
+                <span id="domain-lbl">Domains</span>
+            </button>
         </div>
 
         <!-- CATEGORY PILLS (only in all tab) -->
@@ -2165,7 +2239,7 @@
                     </svg>
                 </button>
             </div>
-            <div style="padding: 16px; overflow-y: auto; display:flex; flex-direction:column; gap:12px;" id="history-grid">
+            <div style="padding: 12px 16px; overflow-y: auto; display:flex; flex-direction:column; gap:6px;" id="history-grid">
                 <!-- Cards injected here -->
             </div>
             <div style="padding:16px; text-align:center; display:none;" id="history-empty">
@@ -2309,9 +2383,14 @@
                     <button class="pill" style="margin-top:8px;width:100%;border:1.5px solid var(--accent);"
                         id="detail-copy-btn">Copy Command</button>
                 </div>
+                <!-- Similar tools section -->
+                <div id="similar-section" style="display:none;margin-top:14px;">
+                    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Similar Tools</div>
+                    <div id="similar-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+                </div>
             </div>
             <div class="detail-footer">
-                <button class="pill" id="detail-suggest-btn" style="border:1.5px dashed var(--glass-border);background:var(--glass);color:var(--muted);width:auto;padding:0 14px;">Suggest Similar</button>
+                <button class="pill" id="detail-suggest-btn" style="border:1.5px solid var(--glass-border);background:var(--accent-soft);color:var(--accent);width:auto;padding:0 14px;">✦ Similar</button>
                 <a class="visit-btn" id="detail-visit-btn" href="#" target="_blank" rel="noopener">Visit Site ↗</a>
             </div>
         </div>
@@ -2748,9 +2827,36 @@
             
             recentTools.forEach(url => {
                 const s = sites.find(x => x.url === url);
-                if (s) {
-                    historyGrid.appendChild(makeCard(s, 0));
-                }
+                if (!s) return;
+                const color = CAT_COLOR[s.cat] || '#3d7eff';
+                const domain = getDomain(s.url);
+
+                const row = document.createElement('div');
+                row.className = 'history-row';
+                row.innerHTML = `
+                    <div class="h-strip" style="background:${color}"></div>
+                    <img class="h-logo" src="${s.logo || FAV_API(domain)}" alt="" onerror="this.style.display='none'">
+                    <div class="h-info">
+                        <div class="h-name">${s.name}</div>
+                        <div class="h-url">${domain}</div>
+                    </div>
+                    <button class="h-open-btn">Open ↗</button>
+                `;
+
+                // Clicking the row opens detail modal
+                row.addEventListener('click', (e) => {
+                    if (e.target.closest('.h-open-btn')) return;
+                    historyModal.classList.add('hidden');
+                    openDetailModal(s);
+                });
+
+                // Open button goes directly to the site
+                row.querySelector('.h-open-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    window.open(s.url, '_blank', 'noopener');
+                });
+
+                historyGrid.appendChild(row);
             });
         }
 
@@ -2904,6 +3010,10 @@
 
         function openDetailModal(s) {
             _detailSite = s;
+            // Reset similar section
+            _similarOpen = false;
+            document.getElementById('similar-section').style.display = 'none';
+            document.getElementById('detail-suggest-btn').textContent = '✦ Similar';
             const domain = getDomain(s.url);
             const color = CAT_COLOR[s.cat] || '#3d7eff';
 
@@ -2942,13 +3052,71 @@
             detailModal.classList.remove('hidden');
         }
 
-        // Suggest Similar Button logic
+        // Suggest Similar Button — shows similar tools inline inside the detail modal
+        let _similarOpen = false;
         document.getElementById('detail-suggest-btn').addEventListener('click', () => {
-            detailModal.classList.add('hidden');
-            atName.value = ''; atUrl.value = ''; atDesc.value = ''; atError.style.display = 'none';
-            if (_detailSite && _detailSite.cat) atCat.value = _detailSite.cat;
-            addToolModal.classList.remove('hidden');
-            setTimeout(() => atName.focus(), 100);
+            const sect = document.getElementById('similar-section');
+            const list = document.getElementById('similar-list');
+            const btn  = document.getElementById('detail-suggest-btn');
+
+            if (_similarOpen) {
+                sect.style.display = 'none';
+                _similarOpen = false;
+                btn.textContent = '✦ Similar';
+                return;
+            }
+
+            if (!_detailSite) return;
+
+            // Find similar: same category, exclude the current tool
+            const sameCat = sites.filter(s => s.cat === _detailSite.cat && s.url !== _detailSite.url);
+            // Also try fuzzy keyword match on name/desc if fewer than 3 same-cat
+            const kwds = _detailSite.name.toLowerCase().split(' ');
+            const fuzzy = sites.filter(s => {
+                if (s.url === _detailSite.url) return false;
+                if (s.cat === _detailSite.cat) return false; // already in sameCat
+                return kwds.some(k => k.length > 3 && (s.name.toLowerCase().includes(k) || s.desc.toLowerCase().includes(k)));
+            });
+            const similar = [...sameCat, ...fuzzy].slice(0, 5);
+
+            list.innerHTML = '';
+            if (similar.length === 0) {
+                list.innerHTML = `<div style="font-size:0.80rem;color:var(--muted);padding:8px 0;">No similar tools found in your library.</div>`;
+            } else {
+                similar.forEach(s => {
+                    const color = CAT_COLOR[s.cat] || '#3d7eff';
+                    const domain = getDomain(s.url);
+                    const row = document.createElement('div');
+                    row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:var(--glass);border:1px solid var(--glass-border);cursor:pointer;transition:background .15s;';
+                    row.innerHTML = `
+                        <img src="${s.logo || FAV_API(domain)}" style="width:26px;height:26px;border-radius:6px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'">
+                        <div style="flex:1;min-width:0;">
+                            <div style="font-size:0.82rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.name}</div>
+                            <div style="font-size:0.70rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.desc}</div>
+                        </div>
+                        <span style="font-size:0.62rem;font-family:'DM Mono',monospace;padding:2px 8px;border-radius:20px;background:${color}18;color:${color};flex-shrink:0;">${s.cat}</span>
+                    `;
+                    row.addEventListener('mouseenter', () => row.style.background = 'var(--glass-hover)');
+                    row.addEventListener('mouseleave', () => row.style.background = 'var(--glass)');
+                    row.addEventListener('click', () => {
+                        const panel = detailModal.querySelector('.modal-panel');
+                        panel.style.transition = 'opacity 0.18s ease, transform 0.18s ease';
+                        panel.style.opacity = '0';
+                        panel.style.transform = 'scale(0.97)';
+                        setTimeout(() => {
+                            openDetailModal(s);
+                            panel.style.opacity = '1';
+                            panel.style.transform = 'scale(1)';
+                            setTimeout(() => { panel.style.transition = ''; }, 200);
+                        }, 180);
+                    });
+                    list.appendChild(row);
+                });
+            }
+
+            sect.style.display = 'block';
+            _similarOpen = true;
+            btn.textContent = '✕ Hide Similar';
         });
 
         //by me 
