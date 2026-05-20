@@ -1862,11 +1862,18 @@
 
             .pills {
                 max-height: 31px;
-                overflow: hidden;
+                overflow-x: auto;
+                overflow-y: hidden;
                 position: relative;
-                padding-right: 64px;
+                padding-right: 0;
                 padding-bottom: 0;
                 margin-bottom: 16px;
+                flex-wrap: nowrap;
+                scrollbar-width: none; /* Firefox */
+            }
+            
+            .pills::-webkit-scrollbar {
+                display: none; /* Chrome/Safari */
             }
 
             .pills.expanded {
@@ -1874,15 +1881,16 @@
                 overflow: visible;
                 padding-right: 0;
                 padding-bottom: 20px;
+                flex-wrap: wrap;
             }
 
             .pill-more {
                 display: flex;
-                position: absolute;
+                position: sticky;
                 right: 0;
                 top: 0;
                 z-index: 10;
-                box-shadow: -10px 0 15px var(--bg);
+                box-shadow: -15px 0 15px 5px var(--bg-body);
             }
 
             .pills.expanded .pill-more {
@@ -2337,7 +2345,7 @@
 
         /* ══ STATE ══ */
         let sites = [];
-        let activeCat = 'all';
+        let activeCats = new Set();
         let activeTab = 'all';
         let searchQ = '';
         let pendingDoms = new Set();
@@ -2485,22 +2493,43 @@
 
         /* ══ PILLS ══ */
         pillsEl.addEventListener('click', e => {
-            const p = e.target.closest('.pill');
+            const p = e.target.closest('.pill:not(.pill-more):not(.pill-less)');
             if (!p) return;
-            [...pillsEl.querySelectorAll('.pill')].forEach(x => x.classList.remove('active'));
-            p.classList.add('active');
+            const cat = p.dataset.cat;
+            
+            if (cat === 'all') {
+                activeCats.clear();
+            } else {
+                if (activeCats.has(cat)) {
+                    activeCats.delete(cat);
+                } else {
+                    activeCats.add(cat);
+                    catHistory[cat] = (catHistory[cat] || 0) + 2;
+                    localStorage.setItem('catHistory', JSON.stringify(catHistory));
+                }
+            }
 
-            pillsEl.prepend(p);
+            [...pillsEl.querySelectorAll('.pill:not(.pill-more):not(.pill-less)')].forEach(x => {
+                if (activeCats.size === 0) {
+                    x.classList.toggle('active', x.dataset.cat === 'all');
+                } else {
+                    x.classList.toggle('active', activeCats.has(x.dataset.cat));
+                }
+            });
 
-            activeCat = p.dataset.cat;
-
-            if (activeCat !== 'all') {
-                catHistory[activeCat] = (catHistory[activeCat] || 0) + 2;
-                localStorage.setItem('catHistory', JSON.stringify(catHistory));
+            const pRect = p.getBoundingClientRect();
+            const elRect = pillsEl.getBoundingClientRect();
+            if (pRect.left < elRect.left || pRect.right > elRect.right) {
+                p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
 
             appliedDoms.clear(); updateDomLbl();
-            render();
+            
+            if (document.startViewTransition) {
+                document.startViewTransition(() => render());
+            } else {
+                render();
+            }
         });
 
         const clearBtn = document.getElementById('clear-btn');
@@ -2551,7 +2580,7 @@
             closeModal();
             [...pillsEl.querySelectorAll('.pill')].forEach(p => p.classList.remove('active'));
             pillsEl.querySelector('[data-cat="all"]').classList.add('active');
-            activeCat = 'all'; updateDomLbl(); render();
+            activeCats.clear(); updateDomLbl(); render();
         });
 
         /* ══ RENDER CARD ══ */
@@ -2566,6 +2595,7 @@
             card.className = 'card';
             card.style.animationDelay = `${Math.min(idx * .026, .36)}s`;
             card.style.setProperty('--cat-color', color);
+            card.style.viewTransitionName = `card-${key.replace(/[^a-z0-9]/gi, '')}`;
 
             // Smart Click Logic — open Detail modal for ALL cards
             card.addEventListener('click', (e) => {
@@ -2742,7 +2772,7 @@
             if (activeTab === 'fav') pool = sites.filter(s => favourites.has(siteKey(s)));
 
             const filtered = pool.filter(s => {
-                const catOk = activeTab === 'fav' || activeCat === 'all' || s.cat === activeCat;
+                const catOk = activeTab === 'fav' || activeCats.size === 0 || activeCats.has(s.cat);
                 const domOk = !domCats || domCats.has(s.cat);
                 const qOk = !lq || s.name.toLowerCase().includes(lq) || s.desc.toLowerCase().includes(lq) || s.cat.includes(lq);
                 return catOk && domOk && qOk;
@@ -2953,6 +2983,13 @@
                 window._baseSites = data;
                 rebuildSites();
                 updateFavBadge();
+                
+                // Smart ordering of pills based on history
+                const pillArr = [...pillsEl.querySelectorAll('.pill:not(.pill-more):not(.pill-less):not([data-cat="all"])')];
+                pillArr.sort((a, b) => (catHistory[b.dataset.cat] || 0) - (catHistory[a.dataset.cat] || 0));
+                const morePill = pillsEl.querySelector('.pill-more');
+                pillArr.forEach(p => pillsEl.insertBefore(p, morePill));
+                
                 render();
             })
             .catch(() => {
