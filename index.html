@@ -830,30 +830,18 @@
             }
         }
 
-        /* ── RECENT SECTION ── */
-        .recent-section {
-            margin-bottom: 24px;
+        /* ── HISTORY MODAL STYLES ── */
+        #history-grid .card {
+            flex-direction: row;
+            align-items: center;
+            padding-right: 10px;
         }
-        .recent-header {
-            margin-bottom: 12px;
-            padding-left: 4px;
-        }
-        .recent-grid {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding-bottom: 12px;
-            scroll-snap-type: x mandatory;
-        }
-        .recent-grid::-webkit-scrollbar { height: 4px; }
-        .recent-grid::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 4px; }
-        .recent-grid::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
-        .recent-grid .card {
-            min-width: 240px;
-            max-width: 240px;
-            flex-shrink: 0;
-            scroll-snap-align: start;
-        }
+        #history-grid .card-strip { width: 4px; height: auto; align-self: stretch; background: var(--cat-color) !important; opacity: 1 !important; }
+        #history-grid .card-body { flex-direction: row; align-items: center; padding: 8px 10px; width: 100%; gap: 12px; }
+        #history-grid .card-head { width: auto; flex: 1; min-width: 0; }
+        #history-grid .card-desc { display: none; }
+        #history-grid .card-footer { margin-top: 0; margin-left: auto; flex-shrink: 0; }
+
 
         /* ── QUICK COPY BUTTON ── */
         .quick-copy-btn {
@@ -1756,6 +1744,12 @@
                 </button>
             </div>
             <div class="topbar-right">
+                <button class="icon-btn" id="history-btn" title="Recently Used">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </button>
                 <button class="icon-btn" id="view-btn" title="Toggle List View">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1807,13 +1801,6 @@
                 More</div>
             <div class="pill-less" id="pill-less"
                 onclick="document.getElementById('pills').classList.remove('expanded')">&lt;</div>
-        </div>
-
-        <div class="recent-section" id="recent-section" style="display:none;">
-            <div class="recent-header">
-                <span class="sp-title" style="font-size:0.8rem;color:var(--text);font-weight:600;">Recently Used</span>
-            </div>
-            <div class="recent-grid" id="recent-grid"></div>
         </div>
 
         <div class="meta-row">
@@ -1974,6 +1961,30 @@
                     </svg>
                     Add Custom Tool
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HISTORY MODAL -->
+    <div class="modal-overlay hidden" id="history-modal">
+        <div class="modal-panel" style="max-width:400px; max-height:80vh;">
+            <div class="m-header" style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h2>History</h2>
+                    <p>Recently visited tools</p>
+                </div>
+                <button class="sp-close" id="history-close">
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="1" y1="1" x2="11" y2="11" />
+                        <line x1="11" y1="1" x2="1" y2="11" />
+                    </svg>
+                </button>
+            </div>
+            <div style="padding: 16px; overflow-y: auto; display:flex; flex-direction:column; gap:12px;" id="history-grid">
+                <!-- Cards injected here -->
+            </div>
+            <div style="padding:16px; text-align:center; display:none;" id="history-empty">
+                <p style="font-size:0.84rem; color:var(--muted);">No history yet</p>
             </div>
         </div>
     </div>
@@ -2496,28 +2507,38 @@
 
         /* ══ RECENT TOOLS LOGIC ══ */
         let recentTools = JSON.parse(localStorage.getItem('recentTools') || '[]');
-        const recentSection = document.getElementById('recent-section');
-        const recentGrid = document.getElementById('recent-grid');
+        const historyModal = document.getElementById('history-modal');
+        const historyGrid = document.getElementById('history-grid');
+        const historyEmpty = document.getElementById('history-empty');
+
+        document.getElementById('history-btn').addEventListener('click', () => {
+            renderHistoryModal();
+            historyModal.classList.remove('hidden');
+        });
+        document.getElementById('history-close').addEventListener('click', () => historyModal.classList.add('hidden'));
+        historyModal.addEventListener('click', e => { if (e.target === historyModal) historyModal.classList.add('hidden'); });
 
         function updateRecentTools(s) {
             recentTools = recentTools.filter(url => url !== s.url);
             recentTools.unshift(s.url);
             if (recentTools.length > 5) recentTools.pop();
             localStorage.setItem('recentTools', JSON.stringify(recentTools));
-            renderRecent();
         }
 
-        function renderRecent() {
-            if (activeTab !== 'all' || searchQ.length > 0 || appliedDoms.size > 0 || activeCat !== 'all' || recentTools.length === 0) {
-                recentSection.style.display = 'none';
+        function renderHistoryModal() {
+            historyGrid.innerHTML = '';
+            if (recentTools.length === 0) {
+                historyGrid.style.display = 'none';
+                historyEmpty.style.display = 'block';
                 return;
             }
-            recentSection.style.display = 'block';
-            recentGrid.innerHTML = '';
+            historyGrid.style.display = 'flex';
+            historyEmpty.style.display = 'none';
+            
             recentTools.forEach(url => {
                 const s = sites.find(x => x.url === url);
                 if (s) {
-                    recentGrid.appendChild(makeCard(s, 0));
+                    historyGrid.appendChild(makeCard(s, 0));
                 }
             });
         }
@@ -2562,7 +2583,6 @@
             filtered.forEach((s, i) => grid.insertBefore(makeCard(s, i), emptyState));
 
             checkEmpty();
-            renderRecent();
         }
 
         /* ══ REBUILD SITES (merge base + custom) ══ */
@@ -2588,7 +2608,9 @@
 
             // Escape => clear search / close modals
             if (e.key === 'Escape') {
-                if (!document.getElementById('detail-modal').classList.contains('hidden')) {
+                if (!historyModal.classList.contains('hidden')) {
+                    historyModal.classList.add('hidden');
+                } else if (!document.getElementById('detail-modal').classList.contains('hidden')) {
                     document.getElementById('detail-modal').classList.add('hidden');
                 } else if (!instModal.classList.contains('hidden')) {
                     instModal.classList.add('hidden');
