@@ -1,6 +1,6 @@
 # Dev Hub
 
-A high-performance, minimalist dashboard designed for developers to manage and access technical resources across various domains including AI, Machine Learning, Cybersecurity, and IoT.
+A high-performance, minimalist dashboard designed for developers to manage and access technical resources across various domains including AI, Machine Learning, Cybersecurity, IoT and ide.
 
 ## Live Demo
 Access the application here: [https://dev-hub.work.gd](https://dev-hub.work.gd)
