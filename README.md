@@ -1,9 +1,9 @@
 # Dev Hub
 
-A high-performance, minimalist dashboard designed for developers to manage and access technical resources across various domains including AI, Machine Learning, Cybersecurity, and IoT.
+A high-performance, minimalist dashboard designed for developers to manage and access technical resources across various domains including AI, Machine Learning, Cybersecurity, IoT and ide.
 
 ## Live Demo
-Access the application here: [https://sahil002620q.github.io/dev-hub/](https://sahil002620q.github.io/dev-hub/)
+Access the application here: [https://dev-hub.work.gd](https://dev-hub.work.gd)
 
 ## Overview
 Dev Hub serves as a centralized command center for developers. It eliminates the need for maintaining extensive browser bookmarks by providing a categorized, searchable, and customizable interface for frequently used tools and documentation.

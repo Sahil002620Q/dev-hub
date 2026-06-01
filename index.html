@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Hub</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0e1223">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
@@ -110,36 +112,26 @@
         }
 
         [data-theme="dark"] {
-            /* Change glass to be darker and more subtle against pure black */
-            --glass: rgba(15, 15, 18, 0.75);
-            --glass-hover: rgba(25, 25, 30, 0.85);
-
-            /* Main background: Pure black */
-            --bg-body: #000000;
-
-            /* Neutral dark gradients - removed the navy/blue tints */
-            --bg-grad1: rgba(0, 0, 0, 1);
-            --bg-grad2: rgba(5, 5, 5, 0.95);
-            --bg-grad3: rgba(2, 2, 2, 0.90);
-
-            /* The linear fall-back gradient */
-            --bg-lin: linear-gradient(150deg, #000000 0%, #080808 55%, #000000 100%);
-
-            /* Neutral Orbs: Using very subtle white/grey instead of blue */
-            --orb1: rgba(255, 255, 255, 0.03);
-            --orb2: rgba(255, 255, 255, 0.02);
-            --orb3: rgba(255, 255, 255, 0.02);
-
-            /* Settings and Modal Backgrounds */
-            --sp-bg: rgba(12, 12, 12, 0.98);
-
-            /* Keep other variables */
+            --glass: rgba(22, 26, 42, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(32, 38, 58, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
             --text: #e6e9f4;
             --text2: #8a90a8;
             --muted: #4e5470;
             --accent: #5b9fff;
             --accent-soft: rgba(91, 159, 255, 0.12);
             --accent-glow: rgba(91, 159, 255, 0.28);
+            --bg-body: #0c0f1a;
+            --bg-grad1: rgba(18, 30, 65, 0.90);
+            --bg-grad2: rgba(22, 16, 52, 0.85);
+            --bg-grad3: rgba(12, 35, 60, 0.80);
+            --bg-lin: linear-gradient(150deg, #0b1320 0%, #0f0e20 55%, #0a1420 100%);
+            --orb1: rgba(40, 80, 200, 0.16);
+            --orb2: rgba(70, 40, 155, 0.13);
+            --orb3: rgba(25, 95, 145, 0.13);
+            --sp-bg: rgba(14, 18, 32, 0.90);
             --sp-border: rgba(255, 255, 255, 0.07);
             --sp-row-hover: rgba(255, 255, 255, 0.035);
             --divider: rgba(255, 255, 255, 0.06);
@@ -149,6 +141,193 @@
             --fav-ring: rgba(255, 255, 255, 0.12);
             --cat-pill-bg: rgba(91, 159, 255, 0.10);
         }
+
+        [data-theme="midnight"] {
+            --glass: rgba(15, 15, 18, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(25, 25, 30, 0.85);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #e6e9f4;
+            --text2: #8a90a8;
+            --muted: #4e5470;
+            --accent: #5b9fff;
+            --accent-soft: rgba(91, 159, 255, 0.12);
+            --accent-glow: rgba(91, 159, 255, 0.28);
+            --bg-body: #000000;
+            --bg-grad1: rgba(0, 0, 0, 1);
+            --bg-grad2: rgba(5, 5, 5, 0.95);
+            --bg-grad3: rgba(2, 2, 2, 0.90);
+            --bg-lin: linear-gradient(150deg, #000000 0%, #080808 55%, #000000 100%);
+            --orb1: rgba(255, 255, 255, 0.03);
+            --orb2: rgba(255, 255, 255, 0.02);
+            --orb3: rgba(255, 255, 255, 0.02);
+            --sp-bg: rgba(12, 12, 12, 0.98);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(91, 159, 255, 0.10);
+        }
+
+        [data-theme="forest"] {
+            --glass: rgba(16, 28, 20, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(24, 38, 28, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #e2ecd6;
+            --text2: #92a488;
+            --muted: #5e7054;
+            --accent: #10b981;
+            --accent-soft: rgba(16, 185, 129, 0.12);
+            --accent-glow: rgba(16, 185, 129, 0.28);
+            --bg-body: #0a120c;
+            --bg-grad1: rgba(10, 45, 25, 0.90);
+            --bg-grad2: rgba(15, 30, 20, 0.85);
+            --bg-grad3: rgba(5, 25, 15, 0.80);
+            --bg-lin: linear-gradient(150deg, #081109 0%, #0c180e 55%, #051006 100%);
+            --orb1: rgba(40, 200, 100, 0.16);
+            --orb2: rgba(70, 155, 90, 0.13);
+            --orb3: rgba(25, 145, 75, 0.13);
+            --sp-bg: rgba(10, 20, 14, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(16, 185, 129, 0.10);
+        }
+
+        [data-theme="sunset"] {
+            --glass: rgba(32, 18, 18, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(42, 24, 24, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #f0e0df;
+            --text2: #a89090;
+            --muted: #705050;
+            --accent: #f59e0b;
+            --accent-soft: rgba(245, 158, 11, 0.12);
+            --accent-glow: rgba(245, 158, 11, 0.28);
+            --bg-body: #160a0a;
+            --bg-grad1: rgba(65, 20, 20, 0.90);
+            --bg-grad2: rgba(45, 15, 25, 0.85);
+            --bg-grad3: rgba(35, 10, 15, 0.80);
+            --bg-lin: linear-gradient(150deg, #180b0b 0%, #201010 55%, #150808 100%);
+            --orb1: rgba(200, 60, 40, 0.16);
+            --orb2: rgba(180, 50, 90, 0.13);
+            --orb3: rgba(145, 40, 60, 0.13);
+            --sp-bg: rgba(22, 12, 12, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(245, 158, 11, 0.10);
+        }
+
+        [data-theme="ocean"] {
+            --glass: rgba(10, 20, 32, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(15, 30, 45, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #d0e4f5;
+            --text2: #84a8cc;
+            --muted: #4e6f92;
+            --accent: #3b82f6;
+            --accent-soft: rgba(59, 130, 246, 0.12);
+            --accent-glow: rgba(59, 130, 246, 0.28);
+            --bg-body: #050a12;
+            --bg-grad1: rgba(10, 30, 60, 0.90);
+            --bg-grad2: rgba(5, 20, 40, 0.85);
+            --bg-grad3: rgba(15, 25, 50, 0.80);
+            --bg-lin: linear-gradient(150deg, #040810 0%, #06101c 55%, #03060a 100%);
+            --orb1: rgba(30, 100, 255, 0.16);
+            --orb2: rgba(40, 150, 220, 0.13);
+            --orb3: rgba(20, 180, 200, 0.13);
+            --sp-bg: rgba(8, 16, 26, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(59, 130, 246, 0.10);
+        }
+
+        [data-theme="slate"] {
+            --glass: rgba(30, 40, 50, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(40, 50, 65, 0.80);
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.44), 0 2px 8px rgba(0, 0, 0, 0.22);
+            --text: #e2e8f0;
+            --text2: #94a3b8;
+            --muted: #64748b;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.12);
+            --accent-glow: rgba(56, 189, 248, 0.28);
+            --bg-body: #0f172a;
+            --bg-grad1: rgba(30, 41, 59, 0.90);
+            --bg-grad2: rgba(15, 23, 42, 0.85);
+            --bg-grad3: rgba(20, 30, 45, 0.80);
+            --bg-lin: linear-gradient(150deg, #0f172a 0%, #1e293b 55%, #020617 100%);
+            --orb1: rgba(56, 189, 248, 0.16);
+            --orb2: rgba(99, 102, 241, 0.13);
+            --orb3: rgba(14, 165, 233, 0.13);
+            --sp-bg: rgba(15, 23, 42, 0.95);
+            --sp-border: rgba(255, 255, 255, 0.07);
+            --sp-row-hover: rgba(255, 255, 255, 0.035);
+            --divider: rgba(255, 255, 255, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.05);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(255, 255, 255, 0.12);
+            --cat-pill-bg: rgba(56, 189, 248, 0.10);
+        }
+
+        [data-theme="rose"] {
+            --glass: rgba(255, 240, 245, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.75);
+            --glass-hover: rgba(255, 245, 250, 0.78);
+            --shadow: 0 2px 16px rgba(170, 90, 110, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 8px 32px rgba(170, 90, 110, 0.15), 0 2px 8px rgba(0, 0, 0, 0.06);
+            --text: #3f1d25;
+            --text2: #7a5058;
+            --muted: #bda2a8;
+            --accent: #f43f5e;
+            --accent-soft: rgba(244, 63, 94, 0.10);
+            --accent-glow: rgba(244, 63, 94, 0.22);
+            --bg-body: #fdf2f8;
+            --bg-grad1: #fbcfe8;
+            --bg-grad2: #fce7f3;
+            --bg-grad3: #f9a8d4;
+            --bg-lin: linear-gradient(150deg, #fdf2f8 0%, #fbcfe8 55%, #f472b6 100%);
+            --orb1: rgba(244, 63, 94, 0.18);
+            --orb2: rgba(225, 29, 72, 0.15);
+            --orb3: rgba(251, 113, 133, 0.14);
+            --sp-bg: rgba(255, 255, 255, 0.80);
+            --sp-border: rgba(255, 255, 255, 0.92);
+            --sp-row-hover: rgba(255, 255, 255, 0.48);
+            --divider: rgba(0, 0, 0, 0.06);
+            --pill-bg: rgba(255, 255, 255, 0.50);
+            --pill-border: rgba(255, 255, 255, 0.75);
+            --fav-empty: rgba(0, 0, 0, 0.0);
+            --fav-ring: rgba(0, 0, 0, 0.10);
+            --cat-pill-bg: rgba(244, 63, 94, 0.08);
+        }
+
 
         .orb {
             position: fixed;
@@ -212,10 +391,21 @@
 
         /* ── TOPBAR ── */
         .topbar {
-            padding: 28px 0 24px;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            padding: 12px 18px;
+            margin: 16px 0 28px;
             display: flex;
             align-items: center;
             gap: 10px;
+            background: var(--glass);
+            backdrop-filter: blur(var(--blur)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
         }
 
         .search-box {
@@ -226,7 +416,7 @@
 
         .search-box input {
             width: 100%;
-            padding: 11px 16px 11px 42px;
+            padding: 11px 40px 11px 42px;
             border-radius: 50px;
             border: 1.5px solid var(--glass-border);
             background: var(--glass);
@@ -238,6 +428,42 @@
             outline: none;
             box-shadow: var(--shadow);
             transition: box-shadow .2s, border-color .2s, background .4s, color .4s;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%) scale(1) rotate(0deg);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all .3s cubic-bezier(.34, 1.5, .64, 1);
+        }
+
+        .clear-btn.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .clear-btn:hover {
+            color: var(--accent);
+            transform: translateY(-50%) scale(1.15) rotate(180deg);
+        }
+
+        .clear-btn svg {
+            width: 15px;
+            height: 15px;
+            display: block;
         }
 
         .search-box input::placeholder {
@@ -254,7 +480,8 @@
             left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            opacity: .35;
+            opacity: .7;
+            color: var(--text);
             pointer-events: none;
         }
 
@@ -310,7 +537,7 @@
         }
 
         .domain-trigger {
-            padding: 10px 16px;
+            padding: 7px 16px;
             border-radius: 50px;
             border: 1.5px solid var(--glass-border);
             background: var(--glass);
@@ -347,12 +574,19 @@
         }
 
         /* ── SECTION TABS ── */
-        .nav-tabs {
+        .nav-tabs-wrapper {
             display: flex;
-            gap: 2px;
+            justify-content: space-between;
+            align-items: center;
             padding-bottom: 22px;
             border-bottom: 1.5px solid var(--divider);
             margin-bottom: 18px;
+            gap: 16px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 2px;
         }
 
         .nav-tab {
@@ -431,6 +665,32 @@
             color: var(--accent);
         }
 
+        .pill-more,
+        .pill-less {
+            display: none;
+            padding: 5px 13px;
+            border-radius: 50px;
+            border: 1.5px solid var(--pill-border);
+            background: var(--pill-bg);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
+            font-size: 0.74rem;
+            font-weight: 500;
+            color: var(--muted);
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            transition: all .18s;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pill-more:hover,
+        .pill-less:hover {
+            color: var(--text);
+            background: var(--glass);
+        }
+
         /* ── META ROW ── */
         .meta-row {
             display: flex;
@@ -443,6 +703,7 @@
             font-family: 'DM Mono', monospace;
             font-size: 0.67rem;
             color: var(--muted);
+            margin-left: 6px;
         }
 
         /* ── GRID ── */
@@ -472,13 +733,14 @@
             animation: fadeUp .3s both;
             overflow: hidden;
             cursor: pointer;
+            --cat-color: rgba(61, 126, 255, 0.4);
         }
 
         .card:hover {
             transform: translateY(-3px) scale(1.01);
             background: var(--glass-hover);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(61, 126, 255, 0.20);
+            box-shadow: 0 8px 24px -8px var(--cat-color), var(--shadow-hover);
+            border-color: var(--cat-color);
         }
 
         @keyframes fadeUp {
@@ -570,6 +832,12 @@
             line-height: 1.5;
             flex: 1;
             transition: color .4s;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.16rem;
+            /* 2 lines × 1.5 line-height × 0.72rem */
         }
 
         /* footer row: category pill + fav button */
@@ -625,6 +893,10 @@
         }
 
         .fav-btn svg {
+            color: var(--muted);
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
             width: 13px;
             height: 13px;
             display: block;
@@ -647,25 +919,451 @@
 
         /* heart pop animation */
         @keyframes heartPop {
-            0% {
-                transform: scale(1)
-            }
-
-            40% {
-                transform: scale(1.45)
-            }
-
-            70% {
-                transform: scale(0.9)
-            }
-
-            100% {
-                transform: scale(1)
-            }
+            0% { transform: scale(1) }
+            40% { transform: scale(1.45) }
+            70% { transform: scale(0.9) }
+            100% { transform: scale(1) }
         }
 
         .fav-btn.pop svg {
             animation: heartPop .35s cubic-bezier(.34, 1.5, .64, 1);
+        }
+
+        /* ── SKELETON LOADER ── */
+        .skeleton {
+            background: linear-gradient(90deg, var(--glass-border) 25%, var(--glass-hover) 50%, var(--glass-border) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-load 1.5s infinite linear;
+            border-radius: 4px;
+        }
+        [data-theme="dark"] .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+            background-size: 200% 100%;
+        }
+
+        @keyframes skeleton-load {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skel-card {
+            pointer-events: none;
+        }
+        .skel-logo { width: 32px; height: 32px; border-radius: 8px; }
+        .skel-title { width: 60%; height: 14px; margin-bottom: 2px; }
+        .skel-desc { width: 90%; height: 10px; margin-bottom: 6px; }
+        .skel-desc-2 { width: 70%; height: 10px; }
+        .skel-pill { width: 40px; height: 16px; border-radius: 12px; }
+        .skel-btn { width: 26px; height: 26px; border-radius: 50%; }
+
+        /* ── LIST VIEW MODE ── */
+        .grid.list-view {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        .grid.list-view .card {
+            flex-direction: row;
+            align-items: center;
+            padding-right: 14px;
+        }
+        .grid.list-view .card-strip {
+            width: 4px;
+            height: auto;
+            align-self: stretch;
+            background: var(--cat-color) !important;
+            opacity: 1 !important;
+        }
+        .grid.list-view .card-body {
+            flex-direction: row;
+            align-items: center;
+            padding: 10px 14px 10px 10px;
+            width: 100%;
+            gap: 16px;
+        }
+        .grid.list-view .card-head {
+            width: 200px;
+            flex-shrink: 0;
+        }
+        .grid.list-view .card-desc {
+            -webkit-line-clamp: 1;
+            min-height: auto;
+            margin: 0;
+        }
+        .grid.list-view .card-footer {
+            margin-top: 0;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        
+        @media(max-width: 600px) {
+            .grid.list-view .card-body {
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 12px;
+            }
+            .grid.list-view .card-head {
+                width: 100%;
+            }
+            .grid.list-view .card-desc {
+                -webkit-line-clamp: 2;
+                margin-bottom: 4px;
+                width: 100%;
+            }
+            .grid.list-view .card-footer {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* ── HISTORY MODAL STYLES ── */
+        .history-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            transition: background .15s;
+            cursor: pointer;
+        }
+        .history-row:hover {
+            background: var(--glass-hover);
+        }
+        .history-row .h-strip {
+            width: 4px;
+            height: 32px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .history-row .h-logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .history-row .h-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .history-row .h-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .history-row .h-url {
+            font-size: 0.65rem;
+            font-family: 'DM Mono', monospace;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .history-row .h-open-btn {
+            padding: 5px 12px;
+            border-radius: 50px;
+            border: 1.5px solid var(--glass-border);
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all .15s;
+        }
+        .history-row .h-open-btn:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+
+
+        /* ── QUICK COPY BUTTON ── */
+        .quick-copy-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1.5px solid var(--glass-border);
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all .2s;
+            position: relative;
+            z-index: 2;
+            color: var(--muted);
+            opacity: 0;
+            transform: scale(0.85);
+        }
+
+        .card:hover .quick-copy-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .quick-copy-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
+            transform: scale(1.15);
+        }
+
+        .quick-copy-btn svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .quick-copy-btn.copied {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        /* ── ADD TOOL FAB ── */
+        .add-fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 150;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(61, 126, 255, 0.4), 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all .3s cubic-bezier(.34, 1.5, .64, 1);
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .add-fab:hover {
+            transform: scale(1.12) rotate(90deg);
+            box-shadow: 0 12px 32px rgba(61, 126, 255, 0.5);
+        }
+
+        .add-fab svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* ── ADD TOOL MODAL INPUTS ── */
+        .add-tool-input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1.5px solid var(--glass-border);
+            background: var(--glass);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.83rem;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+            box-sizing: border-box;
+        }
+
+        .add-tool-input:focus {
+            border-color: rgba(61, 126, 255, 0.4);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .add-tool-input::placeholder {
+            color: var(--muted);
+        }
+
+        .add-tool-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 4px;
+            display: block;
+            font-family: 'DM Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .add-tool-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .custom-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 1px 5px;
+            border-radius: 20px;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        /* ── SETTINGS ACTION ROW (Add Tool button) ── */
+        .sp-action-row {
+            padding: 10px 14px;
+        }
+
+        .sp-action-btn {
+            width: 100%;
+            padding: 9px 14px;
+            border-radius: 10px;
+            border: 1.5px dashed var(--glass-border);
+            background: var(--glass);
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: background .2s, border-color .2s, transform .15s;
+        }
+
+        .sp-action-btn:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            transform: scale(1.01);
+        }
+
+        .sp-action-btn svg {
+            width: 13px;
+            height: 13px;
+        }
+
+        /* ── CARD DETAIL MODAL ── */
+        .detail-header {
+            padding: 22px 22px 16px;
+            border-bottom: 1px solid var(--divider);
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .detail-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="dark"] .detail-logo {
+            background: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .detail-logo img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .detail-logo .fb-lg {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .detail-title-block {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .detail-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .detail-cat-pill {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.04em;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: var(--cat-pill-bg);
+            color: var(--accent);
+            display: inline-block;
+        }
+
+        .detail-body {
+            padding: 18px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .detail-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.65;
+        }
+
+        .detail-url {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--muted);
+            word-break: break-all;
+            background: var(--glass);
+            padding: 7px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .detail-install-section {
+            border-top: 1px solid var(--divider);
+            padding-top: 14px;
+        }
+
+        .detail-footer {
+            padding: 0 22px 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .visit-btn {
+            flex: 1;
+            padding: 11px 18px;
+            border-radius: 12px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            transition: opacity .2s, transform .18s;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .visit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
         .empty-state {
@@ -1186,16 +1884,30 @@
             }
 
             .topbar {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                padding: 10px 14px;
+                margin: 12px 0 20px;
+                top: 12px;
+                gap: 8px;
+                border-radius: 20px;
             }
 
             .search-box {
-                max-width: 100%;
-                flex-basis: 100%;
+                max-width: none;
+                flex-basis: auto;
+                flex: 1;
             }
 
             .topbar-right {
                 margin-left: 0;
+            }
+
+            #domain-lbl {
+                display: none;
+            }
+
+            .domain-trigger {
+                padding: 10px;
             }
 
             .settings-panel {
@@ -1203,10 +1915,60 @@
                 width: 256px;
             }
 
+            .nav-tabs-wrapper {
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+
             .nav-tabs {
                 gap: 0;
                 overflow-x: auto;
-                padding-bottom: 14px;
+                scrollbar-width: none;
+            }
+            
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+
+            .pills {
+                max-height: 31px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                position: relative;
+                padding-right: 0;
+                padding-bottom: 0;
+                margin-bottom: 16px;
+                flex-wrap: nowrap;
+                scrollbar-width: none; /* Firefox */
+            }
+            
+            .pills::-webkit-scrollbar {
+                display: none; /* Chrome/Safari */
+            }
+
+            .pills.expanded {
+                max-height: none;
+                overflow: visible;
+                padding-right: 0;
+                padding-bottom: 20px;
+                flex-wrap: wrap;
+            }
+
+            .pill-more {
+                display: flex;
+                position: sticky;
+                right: 0;
+                top: 0;
+                z-index: 10;
+                box-shadow: -15px 0 15px 5px var(--bg-body);
+            }
+
+            .pills.expanded .pill-more {
+                display: none;
+            }
+
+            .pills.expanded .pill-less {
+                display: flex;
             }
         }
     </style>
@@ -1227,15 +1989,28 @@
                         <circle cx="9" cy="9" r="6" />
                         <line x1="13.5" y1="13.5" x2="18" y2="18" />
                     </svg></span>
-                <input id="q" type="text" placeholder="Search..." autocomplete="off" spellcheck="false">
+                <input id="q" type="text" placeholder="Search tools" autocomplete="off" spellcheck="false">
+                <button class="clear-btn" id="clear-btn" aria-label="Clear search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
             </div>
             <div class="topbar-right">
-                <button class="domain-trigger" id="domain-btn">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <path d="M4 6h12M6 10h8M8 14h4" />
+                <button class="icon-btn" id="history-btn" title="Recently Used">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
-                    <span id="domain-lbl">Domains</span>
                 </button>
+                <button class="icon-btn" id="view-btn" title="Toggle List View">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
                 <button class="icon-btn" id="settings-btn" title="Settings">
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7">
                         <circle cx="10" cy="10" r="2.4" />
@@ -1246,16 +2021,25 @@
             </div>
         </div>
 
-        <!-- SECTION TABS -->
-        <div class="nav-tabs" id="nav-tabs">
-            <div class="nav-tab active" data-tab="all">All tools <span class="badge" id="badge-all">0</span></div>
-            <div class="nav-tab" data-tab="fav">
-                <svg viewBox="0 0 20 20" width="13" height="13" fill="currentColor">
-                    <path
-                        d="M10 3.22l1.97 3.99 4.4.64-3.18 3.1.75 4.38L10 13.15l-3.94 2.07.75-4.38L3.63 7.85l4.4-.64L10 3.22z" />
-                </svg>
-                Favourites <span class="badge" id="badge-fav">0</span>
+        <!-- SECTION TABS ROW -->
+        <div class="nav-tabs-wrapper" id="nav-tabs-wrapper">
+            <div class="nav-tabs" id="nav-tabs">
+                <div class="nav-tab active" data-tab="all">All tools <span class="badge" id="badge-all">0</span></div>
+                <div class="nav-tab" data-tab="fav">
+                    <svg viewBox="0 0 20 20" width="13" height="13" fill="currentColor">
+                        <path
+                            d="M10 3.22l1.97 3.99 4.4.64-3.18 3.1.75 4.38L10 13.15l-3.94 2.07.75-4.38L3.63 7.85l4.4-.64L10 3.22z" />
+                    </svg>
+                    Favourites <span class="badge" id="badge-fav">0</span>
+                </div>
             </div>
+
+            <button class="domain-trigger" id="domain-btn">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M4 6h12M6 10h8M8 14h4" />
+                </svg>
+                <span id="domain-lbl">Domains</span>
+            </button>
         </div>
 
         <!-- CATEGORY PILLS (only in all tab) -->
@@ -1272,13 +2056,67 @@
             <div class="pill" data-cat="security">Security</div>
             <div class="pill" data-cat="iot">IoT</div>
             <div class="pill" data-cat="ide">IDEs</div>
+            <div class="pill-more" id="pill-more" onclick="document.getElementById('pills').classList.add('expanded')">+
+                More</div>
+            <div class="pill-less" id="pill-less"
+                onclick="document.getElementById('pills').classList.remove('expanded')">&lt;</div>
         </div>
 
         <div class="meta-row">
-            <div class="meta" id="meta">0 tools</div>
+            <div class="meta" id="meta">Loading...</div>
         </div>
 
         <div class="grid" id="grid">
+            <!-- SKELETON CARDS -->
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+            <div class="card skel-card">
+                <div class="card-strip skeleton"></div>
+                <div class="card-body">
+                    <div class="card-head"><div class="skel-logo skeleton"></div><div><div class="skel-title skeleton"></div></div></div>
+                    <div class="card-desc"><div class="skel-desc skeleton"></div><div class="skel-desc-2 skeleton"></div></div>
+                    <div class="card-footer"><div class="skel-pill skeleton"></div><div class="skel-btn skeleton"></div></div>
+                </div>
+            </div>
+
             <div class="empty-state" id="empty-state">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                     <circle cx="11" cy="11" r="8" />
@@ -1314,46 +2152,46 @@
             <div class="sp-row">
                 <div class="sp-label">
                     <span>Appearance</span>
-                    <span id="theme-lbl">Light mode</span>
+                    <span id="mode-lbl">Light mode</span>
                 </div>
                 <label class="theme-switch">
                     <input type="checkbox" id="theme-chk">
                     <div class="sw-track"></div>
                     <div class="sw-thumb">
-                        <div class="sw-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.2" stroke-linecap="round">
-                                <circle cx="12" cy="12" r="4" />
-                                <line x1="12" y1="2" x2="12" y2="5" />
-                                <line x1="12" y1="19" x2="12" y2="22" />
-                                <line x1="2" y1="12" x2="5" y2="12" />
-                                <line x1="19" y1="12" x2="22" y2="12" />
-                                <line x1="4.93" y1="4.93" x2="7.05" y2="7.05" />
-                                <line x1="16.95" y1="16.95" x2="19.07" y2="19.07" />
-                                <line x1="4.93" y1="19.07" x2="7.05" y2="16.95" />
-                                <line x1="16.95" y1="7.05" x2="19.07" y2="4.93" />
-                            </svg></div>
+                        <div class="sw-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="4" />
+                            <line x1="12" y1="2" x2="12" y2="5" />
+                            <line x1="12" y1="19" x2="12" y2="22" />
+                            <line x1="2" y1="12" x2="5" y2="12" />
+                            <line x1="19" y1="12" x2="22" y2="12" />
+                            <line x1="4.93" y1="4.93" x2="7.05" y2="7.05" />
+                            <line x1="16.95" y1="16.95" x2="19.07" y2="19.07" />
+                            <line x1="4.93" y1="19.07" x2="7.05" y2="16.95" />
+                            <line x1="16.95" y1="7.05" x2="19.07" y2="4.93" />
+                        </svg></div>
                         <div class="sw-moon"><svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
-                            </svg></div>
+                            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                        </svg></div>
                     </div>
                 </label>
             </div>
             <div class="sp-divider"></div>
             <div class="sp-row">
-                <div class="sp-label"><span>Accent</span><span id="accent-lbl">Blue</span></div>
-                <div class="accent-dots" id="accent-dots">
-                    <div class="a-dot active" data-color="#3d7eff" data-name="Blue" style="background:#3d7eff"
-                        title="Blue"></div>
-                    <div class="a-dot" data-color="#10b981" data-name="Green" style="background:#10b981" title="Green">
-                    </div>
-                    <div class="a-dot" data-color="#f59e0b" data-name="Amber" style="background:#f59e0b" title="Amber">
-                    </div>
-                    <div class="a-dot" data-color="#ec4899" data-name="Pink" style="background:#ec4899" title="Pink">
-                    </div>
-                    <div class="a-dot" data-color="#8b5cf6" data-name="Violet" style="background:#8b5cf6"
-                        title="Violet"></div>
+                <div class="sp-label">
+                    <span>Theme</span>
                 </div>
+                <select class="sp-select" id="theme-sel">
+                    <option value="light">Classic Light</option>
+                    <option value="rose">Rose (Light)</option>
+                    <option value="dark">Classic Dark</option>
+                    <option value="slate">Slate (Dark)</option>
+                    <option value="midnight">Midnight</option>
+                    <option value="forest">Forest</option>
+                    <option value="ocean">Ocean</option>
+                    <option value="sunset">Sunset</option>
+                </select>
             </div>
+
             <div class="sp-divider"></div>
             <div class="sp-row">
                 <div class="sp-label"><span>Card Size</span><span id="dens-lbl">Comfortable</span></div>
@@ -1371,6 +2209,41 @@
                     <path d="M6 10h8M10 14V6" />
                     <circle cx="10" cy="10" r="8" />
                 </svg>
+            </div>
+            <div class="sp-divider"></div>
+            <div class="sp-action-row">
+                <button class="sp-action-btn" id="add-fab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Add Custom Tool
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HISTORY MODAL -->
+    <div class="modal-overlay hidden" id="history-modal">
+        <div class="modal-panel" style="max-width:400px; max-height:80vh;">
+            <div class="m-header" style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h2>History</h2>
+                    <p>Recently visited tools</p>
+                </div>
+                <button class="sp-close" id="history-close">
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="1" y1="1" x2="11" y2="11" />
+                        <line x1="11" y1="1" x2="1" y2="11" />
+                    </svg>
+                </button>
+            </div>
+            <div style="padding: 12px 16px; overflow-y: auto; display:flex; flex-direction:column; gap:6px;" id="history-grid">
+                <!-- Cards injected here -->
+            </div>
+            <div style="padding:16px; text-align:center; display:none;" id="history-empty">
+                <p style="font-size:0.84rem; color:var(--muted);">No history yet</p>
             </div>
         </div>
     </div>
@@ -1408,8 +2281,11 @@
                         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <span class="sp-title">Terminal Command</span>
                         <select class="sp-select" id="os-sel">
-                            <option value="wsl">WSL (Windows)</option>
-                            <option value="linux">Linux (Native)</option>
+                            <option value="win">Windows</option>
+                            <option value="mac">macOS</option>
+                            <option value="linux_apt">Linux (Ubuntu/Debian)</option>
+                            <option value="linux_pacman">Linux (Arch)</option>
+                            <option value="linux_dnf">Linux (Fedora/RHEL)</option>
                         </select>
                     </div>
 
@@ -1424,6 +2300,98 @@
 
             <div class="m-footer">
                 <button class="btn-cancel" style="width: 100%;" id="inst-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD TOOL MODAL -->
+    <div class="modal-overlay hidden" id="add-tool-modal">
+        <div class="modal-panel" style="max-width:400px;">
+            <div class="m-header">
+                <h2>Add Custom Tool</h2>
+                <p>Saved locally in your browser</p>
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+                <div class="add-tool-field">
+                    <label class="add-tool-label" for="at-name">Tool Name</label>
+                    <input id="at-name" class="add-tool-input" type="text" placeholder="e.g. My Awesome Tool">
+                </div>
+                <div class="add-tool-field">
+                    <label class="add-tool-label" for="at-url">URL</label>
+                    <input id="at-url" class="add-tool-input" type="url" placeholder="https://...">
+                </div>
+                <div class="add-tool-field">
+                    <label class="add-tool-label" for="at-desc">Description</label>
+                    <input id="at-desc" class="add-tool-input" type="text" placeholder="Short description">
+                </div>
+                <div class="add-tool-field">
+                    <label class="add-tool-label" for="at-cat">Category</label>
+                    <select id="at-cat" class="add-tool-input">
+                        <option value="code">Code</option>
+                        <option value="ai">AI / LLM</option>
+                        <option value="ml">ML &amp; Data</option>
+                        <option value="cloud">Cloud</option>
+                        <option value="research">Research</option>
+                        <option value="learn">Learn</option>
+                        <option value="tools">Tools</option>
+                        <option value="security">Security</option>
+                        <option value="iot">IoT</option>
+                        <option value="ide">IDEs</option>
+                    </select>
+                </div>
+                <p id="at-error" style="color:#ef4444;font-size:0.75rem;display:none;">Please fill in Name and URL.</p>
+            </div>
+            <div class="m-footer">
+                <button class="btn-cancel" id="at-cancel">Cancel</button>
+                <button class="btn-confirm" id="at-save">Add Tool</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD DETAIL MODAL -->
+    <div class="modal-overlay hidden" id="detail-modal">
+        <div class="modal-panel" style="max-width:460px;">
+            <div class="detail-header" id="detail-header">
+                <div class="detail-logo" id="detail-logo">
+                    <img id="detail-img" src="" alt="" loading="lazy"
+                        onerror="this.style.display='none';document.getElementById('detail-fb').style.display='flex'">
+                    <span class="fb-lg" id="detail-fb" style="display:none;"></span>
+                </div>
+                <div class="detail-title-block">
+                    <div class="detail-name" id="detail-name"></div>
+                    <span class="detail-cat-pill" id="detail-cat"></span>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="detail-desc" id="detail-desc"></div>
+                <div class="detail-url" id="detail-url"></div>
+                <!-- Install section: shown only for IDE tools -->
+                <div class="detail-install-section" id="detail-install-section" style="display:none;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                        <span class="sp-title">Terminal Install</span>
+                        <select class="sp-select" id="detail-os-sel">
+                            <option value="win">Windows</option>
+                            <option value="mac">macOS</option>
+                            <option value="linux_apt">Linux (Ubuntu)</option>
+                            <option value="linux_pacman">Linux (Arch)</option>
+                            <option value="linux_dnf">Linux (Fedora)</option>
+                        </select>
+                    </div>
+                    <div id="detail-cmd"
+                        style="background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.73rem;color:var(--accent);word-break:break-all;">
+                    </div>
+                    <button class="pill" style="margin-top:8px;width:100%;border:1.5px solid var(--accent);"
+                        id="detail-copy-btn">Copy Command</button>
+                </div>
+                <!-- Similar tools section -->
+                <div id="similar-section" style="display:none;margin-top:14px;">
+                    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Similar Tools</div>
+                    <div id="similar-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+                </div>
+            </div>
+            <div class="detail-footer">
+                <button class="pill" id="detail-suggest-btn" style="border:1.5px solid var(--glass-border);background:var(--accent-soft);color:var(--accent);width:auto;padding:0 14px;">✦ Similar</button>
+                <a class="visit-btn" id="detail-visit-btn" href="#" target="_blank" rel="noopener">Visit Site ↗</a>
             </div>
         </div>
     </div>
@@ -1454,115 +2422,27 @@
             { id: 'security', name: 'Cybersecurity', color: '#6366f1', cats: ['security'] }
         ];
 
-        const sites = [
-            { name: "GitHub", url: "https://github.com", desc: "Version control & collaboration", cat: "code" },
-            { name: "GitLab", url: "https://gitlab.com", desc: "DevOps with built-in CI/CD", cat: "code" },
-            { name: "VS Code Web", url: "https://vscode.dev", desc: "Full VS Code in the browser", cat: "code" },
-            { name: "CodePen", url: "https://codepen.io", desc: "Live HTML / CSS / JS playground", cat: "code" },
-            { name: "Replit", url: "https://replit.com", desc: "Cloud IDE — code and deploy", cat: "code" },
-            { name: "Stack Overflow", url: "https://stackoverflow.com", desc: "Q&A for every programming issue", cat: "code" },
-            { name: "DevDocs", url: "https://devdocs.io", desc: "Unified API docs for 200+ languages", cat: "code" },
-            { name: "LeetCode", url: "https://leetcode.com", desc: "DSA problems for interviews", cat: "code" },
-            { name: "Codeforces", url: "https://codeforces.com", desc: "Competitive programming contests", cat: "code" },
-            { name: "npm", url: "https://npmjs.com", desc: "Node.js package registry", cat: "code" },
-            { name: "PyPI", url: "https://pypi.org", desc: "Python package index", cat: "code" },
-            { name: "Hugging Face", url: "https://huggingface.co", desc: "Models, datasets & Spaces", cat: "ai" },
-            { name: "Claude", url: "https://claude.ai", desc: "Anthropic AI — reasoning & code", cat: "ai" },
-            { name: "ChatGPT", url: "https://chat.openai.com", desc: "OpenAI conversational AI", cat: "ai" },
-            { name: "Gemini", url: "https://gemini.google.com", desc: "Google multimodal AI", cat: "ai" },
-            { name: "Perplexity", url: "https://perplexity.ai", desc: "AI search with cited answers", cat: "ai" },
-            { name: "OpenAI API", url: "https://platform.openai.com", desc: "GPT-4, DALL·E, Whisper API", cat: "ai" },
-            { name: "Groq", url: "https://groq.com", desc: "Ultra-fast LLM inference", cat: "ai" },
-            { name: "Ollama", url: "https://ollama.com", desc: "Run LLMs locally", cat: "ai" },
-            { name: "Together AI", url: "https://together.ai", desc: "Open-source model cloud API", cat: "ai" },
-            { name: "Replicate", url: "https://replicate.com", desc: "Run ML models via API", cat: "ai" },
-            { name: "LangChain", url: "https://langchain.com", desc: "Framework for LLM-powered apps", cat: "ai" },
-            { name: "LM Studio", url: "https://lmstudio.ai", desc: "Desktop app for local LLMs", cat: "ai" },
-            { name: "Mistral", url: "https://mistral.ai", desc: "Efficient open & commercial LLMs", cat: "ai" },
-            { name: "Kaggle", url: "https://kaggle.com", desc: "Competitions, notebooks & datasets", cat: "ml" },
-            { name: "Google Colab", url: "https://colab.research.google.com", desc: "Free GPU Jupyter notebooks", cat: "ml" },
-            { name: "W&B", url: "https://wandb.ai", desc: "Experiment tracking & versioning", cat: "ml" },
-            { name: "Papers With Code", url: "https://paperswithcode.com", desc: "ML papers + code + benchmarks", cat: "ml" },
-            { name: "PyTorch", url: "https://pytorch.org", desc: "Deep learning framework by Meta", cat: "ml" },
-            { name: "TensorFlow", url: "https://tensorflow.org", desc: "Google open-source ML framework", cat: "ml" },
-            { name: "Scikit-learn", url: "https://scikit-learn.org", desc: "Classical ML algorithms in Python", cat: "ml" },
-            { name: "Fast.ai", url: "https://fast.ai", desc: "Practical deep learning top-down", cat: "ml" },
-            { name: "Roboflow", url: "https://roboflow.com", desc: "Computer vision datasets & training", cat: "ml" },
-            { name: "Vercel", url: "https://vercel.com", desc: "Deploy frontend — zero-config CI/CD", cat: "cloud" },
-            { name: "Railway", url: "https://railway.app", desc: "Instant backend deployments", cat: "cloud" },
-            { name: "Render", url: "https://render.com", desc: "Web services & static sites", cat: "cloud" },
-            { name: "Cloudflare", url: "https://cloudflare.com", desc: "CDN, Workers, Tunnels, Pages", cat: "cloud" },
-            { name: "Supabase", url: "https://supabase.com", desc: "Postgres + auth + storage", cat: "cloud" },
-            { name: "Docker Hub", url: "https://hub.docker.com", desc: "Container image registry", cat: "cloud" },
-            { name: "Fly.io", url: "https://fly.io", desc: "Deploy containers at the edge", cat: "cloud" },
-            { name: "Streamlit", url: "https://streamlit.io", desc: "Python scripts into web apps", cat: "cloud" },
-            { name: "HF Spaces", url: "https://huggingface.co/spaces", desc: "Host Gradio & Streamlit demos", cat: "cloud" },
-            { name: "arXiv", url: "https://arxiv.org", desc: "CS, AI & math preprints", cat: "research" },
-            { name: "Semantic Scholar", url: "https://semanticscholar.org", desc: "AI-powered paper search", cat: "research" },
-            { name: "Google Scholar", url: "https://scholar.google.com", desc: "Scholarly articles & citations", cat: "research" },
-            { name: "Connected Papers", url: "https://connectedpapers.com", desc: "Visual graph of related papers", cat: "research" },
-            { name: "Elicit", url: "https://elicit.com", desc: "AI assistant for literature review", cat: "research" },
-            { name: "IEEE Xplore", url: "https://ieeexplore.ieee.org", desc: "Engineering journals & conferences", cat: "research" },
-            { name: "Distill.pub", url: "https://distill.pub", desc: "Interactive visual ML research", cat: "research" },
-            { name: "freeCodeCamp", url: "https://freecodecamp.org", desc: "Free full-stack curriculum", cat: "learn" },
-            { name: "CS50 Harvard", url: "https://cs50.harvard.edu", desc: "Best free intro to CS", cat: "learn" },
-            { name: "MIT OCW", url: "https://ocw.mit.edu", desc: "Free MIT course materials", cat: "learn" },
-            { name: "Coursera", url: "https://coursera.org", desc: "University courses on AI & ML", cat: "learn" },
-            { name: "roadmap.sh", url: "https://roadmap.sh", desc: "Guided roadmaps for dev roles", cat: "learn" },
-            { name: "GeeksForGeeks", url: "https://geeksforgeeks.org", desc: "DSA & CS fundamentals", cat: "learn" },
-            { name: "Andrej Karpathy", url: "https://youtube.com/@AndrejKarpathy", desc: "LLMs & deep learning from scratch", cat: "learn" },
-            { name: "3Blue1Brown", url: "https://youtube.com/@3blue1brown", desc: "Visual math — algebra & calculus", cat: "learn" },
-            { name: "Postman", url: "https://postman.com", desc: "API testing and documentation", cat: "tools" },
-            { name: "Regex101", url: "https://regex101.com", desc: "Live regex builder & explainer", cat: "tools" },
-            { name: "Excalidraw", url: "https://excalidraw.com", desc: "Sketch diagrams & system designs", cat: "tools" },
-            { name: "Ray.so", url: "https://ray.so", desc: "Beautiful code screenshots", cat: "tools" },
-            { name: "Hoppscotch", url: "https://hoppscotch.io", desc: "Lightweight open-source API client", cat: "tools" },
-            { name: "Transform", url: "https://transform.tools", desc: "Convert JSON, CSS, SVG and more", cat: "tools" },
-            { name: "VirusTotal", url: "https://virustotal.com", desc: "Scan URLs and files for threats", cat: "tools" },
-            { name: "Explainshell", url: "https://explainshell.com", desc: "Explains every shell command flag", cat: "tools" },
-            { name: "Crontab Guru", url: "https://crontab.guru", desc: "Visual cron expression editor", cat: "tools" },
-
-            // Cybersecurity
-            { name: "TryHackMe", url: "https://tryhackme.com", desc: "Hands-on cyber security training", cat: "security" },
-            { name: "Hack The Box", url: "https://hackthebox.com", desc: "Advanced ethical hacking labs", cat: "security" },
-            { name: "Shodan", url: "https://shodan.io", desc: "Search engine for IoT devices", cat: "security" },
-            { name: "Exploit-DB", url: "https://exploit-db.com", desc: "Archive of public exploits", cat: "security" },
-
-            // IoT & Hardware
-            { name: "Wokwi", url: "https://wokwi.com", desc: "Online IoT & Arduino simulator", cat: "iot" },
-            { name: "MQTT.org", url: "https://mqtt.org", desc: "Standard for IoT messaging", cat: "iot" },
-            { name: "ThingsBoard", url: "https://thingsboard.io", desc: "IoT device management platform", cat: "iot" },
-            { name: "PlatformIO", url: "https://platformio.org", desc: "Professional embedded development", cat: "iot" },
-            //ide's added
-            // Add these to your sites array
-            {
-                name: "VS Code",
-                url: "https://code.visualstudio.com",
-                desc: "Extensible code editor for every language",
-                cat: "ide",
-                type: "ide",
-                commands: {
-                    wsl: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg && sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg",
-                    linux: "sudo apt update && sudo apt install code"
-                }
-            },
-
-            {
-                name: "Neovim", url: "https://neovim.io", desc: "Hyperextensible Vim-based text editor", cat: "ide", type: "ide", commands:
-                {
-                    wsl: "sudo apt install neovim",
-                    linux: "sudo pacman -S neovim" // Example for Arch or use sudo apt install neovim
-                }
-            }
-        ];  //ide blocks by me
-
         /* ══ STATE ══ */
-        let activeCat = 'all';
+        let sites = [];
+        let activeCats = new Set();
         let activeTab = 'all';
         let searchQ = '';
         let pendingDoms = new Set();
         let appliedDoms = new Set();
         let favourites = new Set(JSON.parse(localStorage.getItem('favs') || '[]'));
+        let catHistory = JSON.parse(localStorage.getItem('catHistory') || '{}');
+        let customTools = JSON.parse(localStorage.getItem('customTools') || '[]');
+
+        const saveCustomTools = () => localStorage.setItem('customTools', JSON.stringify(customTools));
+
+        // Detect OS for quick-copy
+        const detectOS = () => {
+            const ua = navigator.userAgent;
+            if (ua.includes('Win')) return 'win';
+            if (ua.includes('Mac')) return 'mac';
+            return 'linux_apt';
+        };
+        const userOS = detectOS();
 
         const saveFavs = () => localStorage.setItem('favs', JSON.stringify([...favourites]));
 
@@ -1578,8 +2458,8 @@
         const settBtn = document.getElementById('settings-btn');
         const spClose = document.getElementById('sp-close');
         const themeChk = document.getElementById('theme-chk');
-        const themeLbl = document.getElementById('theme-lbl');
-        const accentLbl = document.getElementById('accent-lbl');
+        const themeSel = document.getElementById('theme-sel');
+        const modeLbl = document.getElementById('mode-lbl');
         const densSel = document.getElementById('dens-sel');
         const densLbl = document.getElementById('dens-lbl');
         const badgeAll = document.getElementById('badge-all');
@@ -1592,11 +2472,31 @@
         const btnConfirm = document.getElementById('btn-confirm');
         const domBtn = document.getElementById('domain-btn');
         const domLbl = document.getElementById('domain-lbl');
+        const viewBtn = document.getElementById('view-btn');
 
         /* ══ HELPERS ══ */
         const getDomain = u => { try { return new URL(u).hostname.replace('www.', '') } catch { return '' } };
         const initials = n => n.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
         const siteKey = s => s.url;
+
+        /* ══ VIEW TOGGLE ══ */
+        let isListView = localStorage.getItem('listView') === 'true';
+        if (isListView) grid.classList.add('list-view');
+        
+        viewBtn.addEventListener('click', () => {
+            isListView = !isListView;
+            grid.classList.toggle('list-view', isListView);
+            localStorage.setItem('listView', isListView);
+            
+            // Swap icon
+            viewBtn.innerHTML = isListView 
+                ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>` 
+                : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        });
+        // Set initial icon
+        if (isListView) {
+            viewBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`;
+        }
 
         /* ══ SETTINGS PANEL ══ */
         let spOpen = false;
@@ -1607,26 +2507,30 @@
         document.addEventListener('click', e => { if (spOpen && !sp.contains(e.target) && e.target !== settBtn) closeSP(); });
 
         /* ══ THEME ══ */
-        const applyTheme = dark => {
-            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-            themeLbl.textContent = dark ? 'Dark mode' : 'Light mode';
-            localStorage.setItem('theme', dark ? 'dark' : 'light');
-        };
-        themeChk.addEventListener('change', () => applyTheme(themeChk.checked));
-        if (localStorage.getItem('theme') === 'dark') { themeChk.checked = true; applyTheme(true); }
+        const applyTheme = () => {
+            const isDark = themeChk.checked;
+            const selTheme = themeSel.value;
+            const themeToApply = isDark ? 'midnight' : selTheme;
+            
+            document.documentElement.setAttribute('data-theme', themeToApply);
+            
+            modeLbl.textContent = isDark ? 'Dark mode' : 'Custom Theme';
+            
+            themeSel.disabled = isDark;
+            themeSel.style.opacity = isDark ? '0.5' : '1';
 
-        /* ══ ACCENT ══ */
-        const setAccent = (color, name) => {
-            document.documentElement.style.setProperty('--accent', color);
-            document.documentElement.style.setProperty('--accent-soft', color + '18');
-            document.documentElement.style.setProperty('--accent-glow', color + '3a');
-            accentLbl.textContent = name;
-            document.querySelectorAll('.a-dot').forEach(d => d.classList.toggle('active', d.dataset.color === color));
-            localStorage.setItem('accent', color); localStorage.setItem('accentName', name);
+            localStorage.setItem('themeIsDark', isDark);
+            localStorage.setItem('themeSelValue', selTheme);
         };
-        document.querySelectorAll('.a-dot').forEach(d => d.addEventListener('click', () => setAccent(d.dataset.color, d.dataset.name)));
-        const sa = localStorage.getItem('accent');
-        if (sa) setAccent(sa, localStorage.getItem('accentName') || 'Custom');
+        themeChk.addEventListener('change', applyTheme);
+        themeSel.addEventListener('change', applyTheme);
+        
+        const savedIsDark = localStorage.getItem('themeIsDark') === 'true';
+        const savedSel = localStorage.getItem('themeSelValue') || 'light';
+        themeChk.checked = savedIsDark;
+        themeSel.value = savedSel;
+        applyTheme();
+
 
         /* ══ DENSITY ══ */
         const setDensity = v => {
@@ -1662,22 +2566,64 @@
             // show/hide pills & domain btn for all-tab only
             pillsEl.style.display = activeTab === 'all' ? '' : 'none';
             domBtn.style.display = activeTab === 'all' ? '' : 'none';
-            qEl.placeholder = activeTab === 'fav' ? 'Search favourites...' : 'Search...';
+            qEl.placeholder = activeTab === 'fav' ? 'Search favourites...' : 'Search tools)';
             render();
         });
 
         /* ══ PILLS ══ */
         pillsEl.addEventListener('click', e => {
-            const p = e.target.closest('.pill');
+            const p = e.target.closest('.pill:not(.pill-more):not(.pill-less)');
             if (!p) return;
-            [...pillsEl.querySelectorAll('.pill')].forEach(x => x.classList.remove('active'));
-            p.classList.add('active');
-            activeCat = p.dataset.cat;
+            const cat = p.dataset.cat;
+            
+            if (cat === 'all') {
+                activeCats.clear();
+            } else {
+                if (activeCats.has(cat)) {
+                    activeCats.delete(cat);
+                } else {
+                    activeCats.add(cat);
+                    catHistory[cat] = (catHistory[cat] || 0) + 2;
+                    localStorage.setItem('catHistory', JSON.stringify(catHistory));
+                }
+            }
+
+            [...pillsEl.querySelectorAll('.pill:not(.pill-more):not(.pill-less)')].forEach(x => {
+                if (activeCats.size === 0) {
+                    x.classList.toggle('active', x.dataset.cat === 'all');
+                } else {
+                    x.classList.toggle('active', activeCats.has(x.dataset.cat));
+                }
+            });
+
+            const pRect = p.getBoundingClientRect();
+            const elRect = pillsEl.getBoundingClientRect();
+            if (pRect.left < elRect.left || pRect.right > elRect.right) {
+                p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
             appliedDoms.clear(); updateDomLbl();
-            render();
+            
+            if (document.startViewTransition) {
+                document.startViewTransition(() => render());
+            } else {
+                render();
+            }
         });
 
-        qEl.addEventListener('input', () => { searchQ = qEl.value; render(); });
+        const clearBtn = document.getElementById('clear-btn');
+        qEl.addEventListener('input', () => {
+            searchQ = qEl.value;
+            clearBtn.classList.toggle('visible', searchQ.length > 0);
+            render();
+        });
+        clearBtn.addEventListener('click', () => {
+            qEl.value = '';
+            searchQ = '';
+            clearBtn.classList.remove('visible');
+            qEl.focus();
+            render();
+        });
 
         /* ══ DOMAIN MODAL ══ */
         domains.forEach(d => {
@@ -1713,32 +2659,54 @@
             closeModal();
             [...pillsEl.querySelectorAll('.pill')].forEach(p => p.classList.remove('active'));
             pillsEl.querySelector('[data-cat="all"]').classList.add('active');
-            activeCat = 'all'; updateDomLbl(); render();
+            activeCats.clear(); updateDomLbl(); render();
         });
 
-        /* ══ RENDER CARD ══ */
         /* ══ RENDER CARD ══ */
         function makeCard(s, idx) {
             const key = siteKey(s);
             const isFav = favourites.has(key);
             const domain = getDomain(s.url);
             const color = CAT_COLOR[s.cat] || '#3d7eff';
+            const isCustom = !!s._custom;
 
             const card = document.createElement('div');
             card.className = 'card';
             card.style.animationDelay = `${Math.min(idx * .026, .36)}s`;
-            
-            // Smart Click Logic
-            card.addEventListener('click', (e) => {
-                // Ignore if clicking the heart button
-                if (e.target.closest('.fav-btn')) return;
+            card.style.setProperty('--cat-color', color);
+            card.style.viewTransitionName = `card-${key.replace(/[^a-z0-9]/gi, '')}`;
 
-                if (s.type === 'ide') {
-                    openInstallModal(s); 
-                } else {
-                    window.open(s.url, '_blank');
-                }
+            // Smart Click Logic — open Detail modal for ALL cards
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.fav-btn') || e.target.closest('.quick-copy-btn') || e.target.closest('.del-custom-btn')) return;
+
+                catHistory[s.cat] = (catHistory[s.cat] || 0) + 1;
+                localStorage.setItem('catHistory', JSON.stringify(catHistory));
+
+                updateRecentTools(s);
+
+                openDetailModal(s);
             });
+
+            // Quick Copy Button HTML (only for installable tools)
+            const quickCopyHtml = s.type === 'ide' && s.commands ? `
+                <button class="quick-copy-btn" title="Quick copy install command for ${userOS}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                </button>` : '';
+
+            // Delete custom button (only for user-added tools)
+            const delBtnHtml = isCustom ? `
+                <button class="quick-copy-btn del-custom-btn" title="Remove custom tool" style="color:var(--muted);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6l-1 14H6L5 6"/>
+                        <path d="M10 11v6M14 11v6"/>
+                        <path d="M9 6V4h6v2"/>
+                    </svg>
+                </button>` : '';
 
             // Set HTML structure
             card.innerHTML = `
@@ -1746,43 +2714,72 @@
                 <div class="card-body">
                   <div class="card-head">
                     <div class="card-logo">
-                      <img src="${s.logo || FAV_API(domain)}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                      <img src="${s.logo || FAV_API(domain)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                       <span class="fb" style="display:none;align-items:center;justify-content:center;width:100%;height:100%">${initials(s.name)}</span>
                     </div>
-                    <div class="card-name">${s.name}</div>
+                    <div class="card-name">${s.name}${isCustom ? '<span class="custom-badge">custom</span>' : ''}</div>
                   </div>
                   <div class="card-desc">${s.desc}</div>
                   <div class="card-footer">
                     <div class="card-cat-pill">${s.cat}</div>
-                    <button class="fav-btn ${isFav ? 'active' : ''}" data-key="${key}" title="${isFav ? 'Remove from favourites' : 'Add to favourites'}">
-                      <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                    </button>
+                    <div style="display:flex;gap:4px;align-items:center;">
+                      ${quickCopyHtml}
+                      ${delBtnHtml}
+                      <button class="fav-btn ${isFav ? 'active' : ''}" data-key="${key}" title="${isFav ? 'Remove from favourites' : 'Add to favourites'}">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
             `;
 
+            // Quick copy listener
+            const qcb = card.querySelector('.quick-copy-btn:not(.del-custom-btn)');
+            if (qcb) {
+                qcb.addEventListener('click', e => {
+                    e.stopPropagation();
+                    const cmd = s.commands[userOS] || s.commands['linux_apt'] || Object.values(s.commands)[0];
+                    navigator.clipboard.writeText(cmd).then(() => {
+                        qcb.classList.add('copied');
+                        setTimeout(() => qcb.classList.remove('copied'), 1800);
+                    });
+                });
+            }
+
+            // Delete custom tool listener
+            const delBtn = card.querySelector('.del-custom-btn');
+            if (delBtn) {
+                delBtn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    customTools = customTools.filter(t => t.url !== s.url);
+                    saveCustomTools();
+                    rebuildSites();
+                    render();
+                });
+            }
+
             // Re-attach favorite button logic after innerHTML is set
             const favBtn = card.querySelector('.fav-btn');
             favBtn.addEventListener('click', e => {
-                e.preventDefault(); 
+                e.preventDefault();
                 e.stopPropagation();
                 const k = favBtn.dataset.key;
-                if (favourites.has(k)) { 
-                    favourites.delete(k); 
-                    favBtn.classList.remove('active', 'pop'); 
-                } else { 
-                    favourites.add(k); 
-                    favBtn.classList.add('active'); 
-                    favBtn.classList.remove('pop'); 
-                    void favBtn.offsetWidth; 
-                    favBtn.classList.add('pop'); 
+                if (favourites.has(k)) {
+                    favourites.delete(k);
+                    favBtn.classList.remove('active', 'pop');
+                } else {
+                    favourites.add(k);
+                    favBtn.classList.add('active');
+                    favBtn.classList.remove('pop');
+                    void favBtn.offsetWidth;
+                    favBtn.classList.add('pop');
                 }
-                saveFavs(); 
+                saveFavs();
                 updateFavBadge();
 
                 if (activeTab === 'fav') {
                     card.style.transition = 'opacity .22s,transform .22s';
-                    card.style.opacity = '0'; 
+                    card.style.opacity = '0';
                     card.style.transform = 'scale(.95)';
                     setTimeout(() => { card.remove(); checkEmpty(); }, 240);
                 }
@@ -1796,6 +2793,71 @@
             const inFavTab = activeTab === 'fav';
             emptyState.style.display = (!inFavTab && cards.length === 0) ? 'block' : 'none';
             favEmpty.style.display = (inFavTab && cards.length === 0) ? 'block' : 'none';
+        }
+
+        /* ══ RECENT TOOLS LOGIC ══ */
+        let recentTools = JSON.parse(localStorage.getItem('recentTools') || '[]');
+        const historyModal = document.getElementById('history-modal');
+        const historyGrid = document.getElementById('history-grid');
+        const historyEmpty = document.getElementById('history-empty');
+
+        document.getElementById('history-btn').addEventListener('click', () => {
+            renderHistoryModal();
+            historyModal.classList.remove('hidden');
+        });
+        document.getElementById('history-close').addEventListener('click', () => historyModal.classList.add('hidden'));
+        historyModal.addEventListener('click', e => { if (e.target === historyModal) historyModal.classList.add('hidden'); });
+
+        function updateRecentTools(s) {
+            recentTools = recentTools.filter(url => url !== s.url);
+            recentTools.unshift(s.url);
+            if (recentTools.length > 5) recentTools.pop();
+            localStorage.setItem('recentTools', JSON.stringify(recentTools));
+        }
+
+        function renderHistoryModal() {
+            historyGrid.innerHTML = '';
+            if (recentTools.length === 0) {
+                historyGrid.style.display = 'none';
+                historyEmpty.style.display = 'block';
+                return;
+            }
+            historyGrid.style.display = 'flex';
+            historyEmpty.style.display = 'none';
+            
+            recentTools.forEach(url => {
+                const s = sites.find(x => x.url === url);
+                if (!s) return;
+                const color = CAT_COLOR[s.cat] || '#3d7eff';
+                const domain = getDomain(s.url);
+
+                const row = document.createElement('div');
+                row.className = 'history-row';
+                row.innerHTML = `
+                    <div class="h-strip" style="background:${color}"></div>
+                    <img class="h-logo" src="${s.logo || FAV_API(domain)}" alt="" onerror="this.style.display='none'">
+                    <div class="h-info">
+                        <div class="h-name">${s.name}</div>
+                        <div class="h-url">${domain}</div>
+                    </div>
+                    <button class="h-open-btn">Open ↗</button>
+                `;
+
+                // Clicking the row opens detail modal
+                row.addEventListener('click', (e) => {
+                    if (e.target.closest('.h-open-btn')) return;
+                    historyModal.classList.add('hidden');
+                    openDetailModal(s);
+                });
+
+                // Open button goes directly to the site
+                row.querySelector('.h-open-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    window.open(s.url, '_blank', 'noopener');
+                });
+
+                historyGrid.appendChild(row);
+            });
         }
 
         /* ══ RENDER ══ */
@@ -1816,10 +2878,18 @@
             if (activeTab === 'fav') pool = sites.filter(s => favourites.has(siteKey(s)));
 
             const filtered = pool.filter(s => {
-                const catOk = activeTab === 'fav' || activeCat === 'all' || s.cat === activeCat;
+                const catOk = activeTab === 'fav' || activeCats.size === 0 || activeCats.has(s.cat);
                 const domOk = !domCats || domCats.has(s.cat);
                 const qOk = !lq || s.name.toLowerCase().includes(lq) || s.desc.toLowerCase().includes(lq) || s.cat.includes(lq);
                 return catOk && domOk && qOk;
+            });
+
+            // Sort by user history, then random
+            filtered.sort((a, b) => {
+                const scoreA = catHistory[a.cat] || 0;
+                const scoreB = catHistory[b.cat] || 0;
+                if (scoreB !== scoreA) return scoreB - scoreA;
+                return a._rand - b._rand;
             });
 
             [...grid.querySelectorAll('.card')].forEach(c => c.remove());
@@ -1832,41 +2902,241 @@
             checkEmpty();
         }
 
+        /* ══ REBUILD SITES (merge base + custom) ══ */
+        function rebuildSites() {
+            // Mark custom tools
+            customTools.forEach(t => t._custom = true);
+            sites = [...window._baseSites, ...customTools];
+            sites.forEach(s => { if (!s._rand) s._rand = Math.random(); });
+            badgeAll.textContent = sites.length;
+        }
+
+        /* ══ KEYBOARD SHORTCUTS ══ */
+        document.addEventListener('keydown', e => {
+            const tag = document.activeElement.tagName;
+            const inInput = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+
+            // / or Ctrl+K => focus search
+            if ((e.key === '/' && !inInput) || (e.key === 'k' && e.ctrlKey)) {
+                e.preventDefault();
+                qEl.focus();
+                qEl.select();
+            }
+
+            // Escape => clear search / close modals
+            if (e.key === 'Escape') {
+                if (!historyModal.classList.contains('hidden')) {
+                    historyModal.classList.add('hidden');
+                } else if (!document.getElementById('detail-modal').classList.contains('hidden')) {
+                    document.getElementById('detail-modal').classList.add('hidden');
+                } else if (!instModal.classList.contains('hidden')) {
+                    instModal.classList.add('hidden');
+                } else if (!document.getElementById('add-tool-modal').classList.contains('hidden')) {
+                    document.getElementById('add-tool-modal').classList.add('hidden');
+                } else if (!modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                } else if (searchQ) {
+                    qEl.value = '';
+                    searchQ = '';
+                    clearBtn.classList.remove('visible');
+                    qEl.blur();
+                    render();
+                }
+            }
+        });
+
+        /* ══ ADD TOOL MODAL ══ */
+        const addFab = document.getElementById('add-fab');
+        const addToolModal = document.getElementById('add-tool-modal');
+        const atName = document.getElementById('at-name');
+        const atUrl = document.getElementById('at-url');
+        const atDesc = document.getElementById('at-desc');
+        const atCat = document.getElementById('at-cat');
+        const atError = document.getElementById('at-error');
+
+        addFab.addEventListener('click', () => {
+            atName.value = ''; atUrl.value = ''; atDesc.value = ''; atError.style.display = 'none';
+            addToolModal.classList.remove('hidden');
+            setTimeout(() => atName.focus(), 100);
+        });
+
+        document.getElementById('at-cancel').addEventListener('click', () => addToolModal.classList.add('hidden'));
+        addToolModal.addEventListener('click', e => { if (e.target === addToolModal) addToolModal.classList.add('hidden'); });
+
+        document.getElementById('at-save').addEventListener('click', () => {
+            const name = atName.value.trim();
+            const url = atUrl.value.trim();
+            if (!name || !url) { atError.style.display = 'block'; return; }
+            atError.style.display = 'none';
+
+            const newTool = {
+                name,
+                url,
+                desc: atDesc.value.trim() || 'Custom tool',
+                cat: atCat.value,
+                _custom: true,
+                _rand: Math.random()
+            };
+            customTools.push(newTool);
+            saveCustomTools();
+            rebuildSites();
+            addToolModal.classList.add('hidden');
+            render();
+        });
+
+        /* ══ DETAIL MODAL ══ */
+        let _detailSite = null;
+        const detailModal = document.getElementById('detail-modal');
+        const detailOsSel = document.getElementById('detail-os-sel');
+        const detailCmd = document.getElementById('detail-cmd');
+        const detailInstallSect = document.getElementById('detail-install-section');
+
+        detailModal.addEventListener('click', e => { if (e.target === detailModal) detailModal.classList.add('hidden'); });
+
+        function updateDetailCmd() {
+            if (!_detailSite || !_detailSite.commands) return;
+            detailCmd.textContent = _detailSite.commands[detailOsSel.value] || 'No command for this OS';
+        }
+        detailOsSel.addEventListener('change', updateDetailCmd);
+
+        document.getElementById('detail-copy-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText(detailCmd.textContent).then(() => {
+                const btn = document.getElementById('detail-copy-btn');
+                const old = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = old, 2000);
+            });
+        });
+
+        function openDetailModal(s) {
+            _detailSite = s;
+            // Reset similar section
+            _similarOpen = false;
+            document.getElementById('similar-section').style.display = 'none';
+            document.getElementById('detail-suggest-btn').textContent = '✦ Similar';
+            const domain = getDomain(s.url);
+            const color = CAT_COLOR[s.cat] || '#3d7eff';
+
+            // header color strip
+            document.getElementById('detail-header').style.borderBottom = `1px solid ${color}33`;
+
+            // logo
+            const img = document.getElementById('detail-img');
+            const fb = document.getElementById('detail-fb');
+            img.style.display = '';
+            fb.style.display = 'none';
+            img.src = s.logo || FAV_API(domain);
+            fb.textContent = initials(s.name);
+
+            // text
+            document.getElementById('detail-name').textContent = s.name;
+            document.getElementById('detail-cat').textContent = s.cat;
+            document.getElementById('detail-cat').style.setProperty('color', color);
+            document.getElementById('detail-desc').textContent = s.desc;
+            document.getElementById('detail-url').textContent = s.url;
+
+            // visit button
+            document.getElementById('detail-visit-btn').href = s.url;
+            document.getElementById('detail-visit-btn').style.background = color;
+
+            // install section
+            if (s.type === 'ide' && s.commands) {
+                detailInstallSect.style.display = 'block';
+                // Auto-select user's OS
+                detailOsSel.value = userOS in s.commands ? userOS : Object.keys(s.commands)[0];
+                updateDetailCmd();
+            } else {
+                detailInstallSect.style.display = 'none';
+            }
+
+            detailModal.classList.remove('hidden');
+        }
+
+        // Suggest Similar Button — shows similar tools inline inside the detail modal
+        let _similarOpen = false;
+        document.getElementById('detail-suggest-btn').addEventListener('click', () => {
+            const sect = document.getElementById('similar-section');
+            const list = document.getElementById('similar-list');
+            const btn  = document.getElementById('detail-suggest-btn');
+
+            if (_similarOpen) {
+                sect.style.display = 'none';
+                _similarOpen = false;
+                btn.textContent = '✦ Similar';
+                return;
+            }
+
+            if (!_detailSite) return;
+
+            // Find similar: same category, exclude the current tool
+            const sameCat = sites.filter(s => s.cat === _detailSite.cat && s.url !== _detailSite.url);
+            // Also try fuzzy keyword match on name/desc if fewer than 3 same-cat
+            const kwds = _detailSite.name.toLowerCase().split(' ');
+            const fuzzy = sites.filter(s => {
+                if (s.url === _detailSite.url) return false;
+                if (s.cat === _detailSite.cat) return false; // already in sameCat
+                return kwds.some(k => k.length > 3 && (s.name.toLowerCase().includes(k) || s.desc.toLowerCase().includes(k)));
+            });
+            const similar = [...sameCat, ...fuzzy].slice(0, 5);
+
+            list.innerHTML = '';
+            if (similar.length === 0) {
+                list.innerHTML = `<div style="font-size:0.80rem;color:var(--muted);padding:8px 0;">No similar tools found in your library.</div>`;
+            } else {
+                similar.forEach(s => {
+                    const color = CAT_COLOR[s.cat] || '#3d7eff';
+                    const domain = getDomain(s.url);
+                    const row = document.createElement('div');
+                    row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:var(--glass);border:1px solid var(--glass-border);cursor:pointer;transition:background .15s;';
+                    row.innerHTML = `
+                        <img src="${s.logo || FAV_API(domain)}" style="width:26px;height:26px;border-radius:6px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'">
+                        <div style="flex:1;min-width:0;">
+                            <div style="font-size:0.82rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.name}</div>
+                            <div style="font-size:0.70rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.desc}</div>
+                        </div>
+                        <span style="font-size:0.62rem;font-family:'DM Mono',monospace;padding:2px 8px;border-radius:20px;background:${color}18;color:${color};flex-shrink:0;">${s.cat}</span>
+                    `;
+                    row.addEventListener('mouseenter', () => row.style.background = 'var(--glass-hover)');
+                    row.addEventListener('mouseleave', () => row.style.background = 'var(--glass)');
+                    row.addEventListener('click', () => {
+                        const panel = detailModal.querySelector('.modal-panel');
+                        panel.style.transition = 'opacity 0.18s ease, transform 0.18s ease';
+                        panel.style.opacity = '0';
+                        panel.style.transform = 'scale(0.97)';
+                        setTimeout(() => {
+                            openDetailModal(s);
+                            panel.style.opacity = '1';
+                            panel.style.transform = 'scale(1)';
+                            setTimeout(() => { panel.style.transition = ''; }, 200);
+                        }, 180);
+                    });
+                    list.appendChild(row);
+                });
+            }
+
+            sect.style.display = 'block';
+            _similarOpen = true;
+            btn.textContent = '✕ Hide Similar';
+        });
+
         //by me 
-        /* ── INSTALLATION MODAL LOGIC ── */
+        /* ── INSTALLATION MODAL LOGIC (legacy, kept for compat) ── */
         let activeIDE = null;
         const instModal = document.getElementById('install-modal');
         const osSel = document.getElementById('os-sel');
         const cmdText = document.getElementById('cmd-text');
 
-        function openInstallModal(ide) {
-            activeIDE = ide;
-            document.getElementById('inst-name').textContent = `Install ${ide.name}`;
-            document.getElementById('inst-site-btn').href = ide.url;
-            updateCmdDisplay();
-            instModal.classList.remove('hidden');
-        }
-
         function updateCmdDisplay() {
             if (!activeIDE) return;
             const os = osSel.value;
-            // Fallback if commands for a specific OS aren't defined
             cmdText.textContent = activeIDE.commands[os] || "No command available for this OS";
         }
-
-        // OS Switcher listener
         osSel.addEventListener('change', updateCmdDisplay);
+        document.getElementById('inst-close').addEventListener('click', () => instModal.classList.add('hidden'));
 
-        // Close modal listener
-        document.getElementById('inst-close').addEventListener('click', () => {
-            instModal.classList.add('hidden');
-        });
-
-        // Copy to clipboard helper
         function copyCmd() {
             const text = cmdText.textContent;
             navigator.clipboard.writeText(text).then(() => {
-                // Optional: Change button text temporarily
                 const btn = document.querySelector('[onclick="copyCmd()"]');
                 const oldText = btn.innerText;
                 btn.innerText = "Copied!";
@@ -1874,7 +3144,31 @@
             });
         }
 
-        render();
+        /* ══ BOOT: fetch tools.json then init ══ */
+        fetch('tools.json')
+            .then(r => r.json())
+            .then(data => {
+                window._baseSites = data;
+                rebuildSites();
+                updateFavBadge();
+                
+                // Smart ordering of pills based on history
+                const pillArr = [...pillsEl.querySelectorAll('.pill:not(.pill-more):not(.pill-less):not([data-cat="all"])')];
+                pillArr.sort((a, b) => (catHistory[b.dataset.cat] || 0) - (catHistory[a.dataset.cat] || 0));
+                const morePill = pillsEl.querySelector('.pill-more');
+                pillArr.forEach(p => pillsEl.insertBefore(p, morePill));
+                
+                render();
+            })
+            .catch(() => {
+                // fallback: graceful error
+                grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:40px">Failed to load tools. Please refresh.</p>';
+            });
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(console.error);
+        }
     </script>
 </body>
 
